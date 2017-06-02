@@ -91,7 +91,7 @@ namespace PhD
 
         protected void DropDownListDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBox_Department.Text = DropDownListDepartment.SelectedItem.Text;
+            
         }
 
         protected void TextBox37_TextChanged(object sender, EventArgs e)
@@ -99,9 +99,18 @@ namespace PhD
             
         }
 
+
+
+
+
+        protected void TextBox37_TextChanged1(object sender, EventArgs e)
+        {
+
+        }
+
         protected void DropDownListDepartment_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            TextBox_Department.Text = DropDownListDepartment.SelectedItem.Text;
+            TextBox37.Text = DropDownListDepartment.SelectedItem.Text;
         }
     }
 }
