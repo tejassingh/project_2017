@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace PhD
 {
@@ -129,6 +131,39 @@ namespace PhD
                 TextBox3.Enabled = false;
             }
 
+        }
+
+        protected void TextBox_Address_Delhi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["Basic_DetailsConnectionString"].ConnectionString);
+                conn1.Open();
+                string insertQuery = "insert into [Table] (Delhi_Address, Delhi_Pincode, Delhi_Telephone, Delhi_Mobile, Per_Address, Per_Pincode, Per_Telephone, Per_Mobile) values (@dadd, @dpin, @dtel, @dmob, @padd, @ppin, @ptel, @pmob)";
+                SqlCommand com1 = new SqlCommand(insertQuery,conn1);
+                com1.Parameters.AddWithValue("@dadd", TextBox_Address_Delhi.Text);
+                com1.Parameters.AddWithValue("@dpin", TextBox_Pincode_Delhi.Text);
+                com1.Parameters.AddWithValue("@dtel", TextBox_Telephone_Delhi.Text);
+                com1.Parameters.AddWithValue("@dmob", TextBox_MobileNo.Text);
+                com1.Parameters.AddWithValue("@padd", TextBox_Per_Add.Text);
+                com1.Parameters.AddWithValue("@ppin", TextBox_Per_Pincode.Text);
+                com1.Parameters.AddWithValue("@ptel", TextBox_Per_Telephone.Text);
+                com1.Parameters.AddWithValue("@pmob", TextBox_Per_MobileNo.Text);
+
+                com1.ExecuteNonQuery();
+                Response.Redirect("Basic_Details_Form.aspx");
+                Response.Write("SUCCESS!!!");
+                conn1.Close();
+            }
+            catch (Exception ex1)
+            {
+                Response.Write("ERROR:"+ ex1.ToString());
+            }
         }
     }
 }

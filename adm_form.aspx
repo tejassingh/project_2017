@@ -203,7 +203,7 @@
             <tr>
                 <td class="auto-style9"><strong>Address in Delhi:</td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Address_Delhi_TextChanged"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style12">Pincode:</td>
@@ -218,13 +218,13 @@
                 <td class="auto-style10">
                     <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="(011)?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="\+?\d[\d -]{8,12}\d"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style12">Mobile No:</td>
                 <td class="auto-style9">
                     <asp:TextBox ID="TextBox_MobileNo" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="RegularExpressionValidator" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d">It must be numeric</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="RegularExpressionValidator" ValidationExpression="\+?\d[\d -]{8,12}\d">It must be numeric</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -246,13 +246,13 @@
                 <td class="auto-style64">
                     <asp:TextBox ID="TextBox_Per_Telephone" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\+?\d[\d -]{8,12}\d"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style65">Mobile No:</td>
                 <td class="auto-style63">
                     <asp:TextBox ID="TextBox_Per_MobileNo" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="\+?\d[\d -]{8,12}\d"></asp:RegularExpressionValidator>
                     </strong>
                     </strong>
                 </td>
@@ -514,7 +514,7 @@
         </table>
     <p class="auto-style80">
         &nbsp;</p>
-        <asp:Button ID="Button3" runat="server" Text="Button2" />
+        <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
     </form>
     <p class="auto-style80">
         &nbsp;</p>
