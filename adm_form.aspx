@@ -333,7 +333,8 @@
                 </td>
                 <td class="auto-style106">
                     <asp:TextBox ID="TextBox8" runat="server" Height="39px" OnTextChanged="TextBox8_TextChanged" Width="160px"></asp:TextBox>
-                    <span class="auto-style22">*</span></td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextBox8" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>M.A./M.Sc./M.C.A./M.Com./M.B.A./M.Tech.</strong></td>
