@@ -526,9 +526,10 @@
                 </td>
             </tr>
         </table>
-    </form>
     <p>
         &nbsp;</p>
+        <asp:Button ID="Button2" runat="server" Text="Button" />
+    </form>
     <p>
         &nbsp;</p>
 </body>
