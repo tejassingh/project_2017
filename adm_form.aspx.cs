@@ -78,5 +78,15 @@ namespace PhD
         {
 
         }
+
+        protected void TextBox25_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
