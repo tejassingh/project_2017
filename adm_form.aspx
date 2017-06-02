@@ -528,7 +528,7 @@
         </table>
     <p>
         &nbsp;</p>
-        <asp:Button ID="Button2" runat="server" Text="Button" />
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
     </form>
     <p>
         &nbsp;</p>
