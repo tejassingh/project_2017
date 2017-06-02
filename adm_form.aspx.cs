@@ -103,5 +103,17 @@ namespace PhD
         {
             TextBox_Department.Text = DropDownListDepartment.SelectedItem.Text;
         }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonList1.SelectedItem.Text == "YES")
+            {
+                TextBox3.Enabled = true;
+            }
+            else if (RadioButtonList1.SelectedItem.Text == "NO")
+            {
+                TextBox3.Enabled = false;
+            }
+        }
     }
 }
