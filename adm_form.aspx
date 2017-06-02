@@ -163,6 +163,7 @@
         .auto-style129 {
             width: 777px;
             height: 26px;
+            text-align: left;
         }
         .auto-style130 {
             width: 190px;
@@ -176,6 +177,10 @@
             width: 189px;
             height: 23px;
             text-align: justify;
+        }
+        .auto-style134 {
+            width: 777px;
+            text-align: left;
         }
     </style>
 </head>
@@ -277,7 +282,7 @@
             <strong>Are you pursuing any other course in this or any other University/Instituition?</strong></td>
                 <td class="auto-style83">
             <strong>
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style57" RepeatDirection="Horizontal" Width="187px">
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style57" RepeatDirection="Horizontal" Width="187px" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1">
                             <asp:ListItem>YES</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>
                         </asp:RadioButtonList>
@@ -496,7 +501,7 @@
             </tr>
             <tr>
                 <td class="auto-style120"><strong>Brief details about the nature of job</strong></td>
-                <td class="auto-style131" colspan="4">
+                <td class="auto-style134" colspan="4">
                     <asp:TextBox ID="TextBox35" runat="server" Enabled="False" Height="66px" Width="574px"></asp:TextBox>
                 </td>
             </tr>

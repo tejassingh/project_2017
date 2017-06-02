@@ -115,6 +115,11 @@ namespace PhD
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
             if (RadioButtonList1.SelectedItem.Text == "YES")
             {
                 TextBox3.Enabled = true;
@@ -123,6 +128,7 @@ namespace PhD
             {
                 TextBox3.Enabled = false;
             }
+
         }
     }
 }
