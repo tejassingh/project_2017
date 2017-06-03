@@ -290,7 +290,7 @@
 		            </td>
                 <td>
             <strong>
-            <asp:TextBox ID="TextBox3" runat="server" OnTextChanged="TextBox3_TextChanged1" Width="308px" CssClass="auto-style60">If Yes,then give details</asp:TextBox>
+            <asp:TextBox ID="TextBox3" runat="server" OnTextChanged="TextBox3_TextChanged1" Width="308px" CssClass="auto-style60" Enabled="False">If Yes,then give details</asp:TextBox>
                         </strong>
 		            </td>
             </tr>
