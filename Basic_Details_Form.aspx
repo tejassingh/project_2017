@@ -16,7 +16,6 @@
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Delhi_Mobile" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="Delhi_Address" HeaderText="Delhi_Address" SortExpression="Delhi_Address" />
                 <asp:BoundField DataField="Delhi_Pincode" HeaderText="Delhi_Pincode" SortExpression="Delhi_Pincode" />
                 <asp:BoundField DataField="Delhi_Telephone" HeaderText="Delhi_Telephone" SortExpression="Delhi_Telephone" />
@@ -25,6 +24,10 @@
                 <asp:BoundField DataField="Per_Pincode" HeaderText="Per_Pincode" SortExpression="Per_Pincode" />
                 <asp:BoundField DataField="Per_Telephone" HeaderText="Per_Telephone" SortExpression="Per_Telephone" />
                 <asp:BoundField DataField="Per_Mobile" HeaderText="Per_Mobile" SortExpression="Per_Mobile" />
+                <asp:BoundField DataField="Father_Occupation" HeaderText="Father_Occupation" SortExpression="Father_Occupation" />
+                <asp:BoundField DataField="Mother_Occupation" HeaderText="Mother_Occupation" SortExpression="Mother_Occupation" />
+                <asp:BoundField DataField="Other_Course" HeaderText="Other_Course" SortExpression="Other_Course" />
+                <asp:BoundField DataField="DU_Enroll" HeaderText="DU_Enroll" SortExpression="DU_Enroll" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

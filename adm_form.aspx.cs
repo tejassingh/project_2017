@@ -144,7 +144,7 @@ namespace PhD
             {
                 SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["Basic_DetailsConnectionString"].ConnectionString);
                 conn1.Open();
-                string insertQuery = "insert into [Table] (Delhi_Address, Delhi_Pincode, Delhi_Telephone, Delhi_Mobile, Per_Address, Per_Pincode, Per_Telephone, Per_Mobile) values (@dadd, @dpin, @dtel, @dmob, @padd, @ppin, @ptel, @pmob)";
+                string insertQuery = "insert into [Table] (Delhi_Address, Delhi_Pincode, Delhi_Telephone, Delhi_Mobile, Per_Address, Per_Pincode, Per_Telephone, Per_Mobile, Father_Occupation, Mother_Occupation, Other_Course, DU_Enroll) values (@dadd, @dpin, @dtel, @dmob, @padd, @ppin, @ptel, @pmob, @focc, @mocc, @ocourse, @duenroll)";
                 SqlCommand com1 = new SqlCommand(insertQuery,conn1);
                 com1.Parameters.AddWithValue("@dadd", TextBox_Address_Delhi.Text);
                 com1.Parameters.AddWithValue("@dpin", TextBox_Pincode_Delhi.Text);
@@ -154,6 +154,10 @@ namespace PhD
                 com1.Parameters.AddWithValue("@ppin", TextBox_Per_Pincode.Text);
                 com1.Parameters.AddWithValue("@ptel", TextBox_Per_Telephone.Text);
                 com1.Parameters.AddWithValue("@pmob", TextBox_Per_MobileNo.Text);
+                com1.Parameters.AddWithValue("@focc", TextBox25.Text);
+                com1.Parameters.AddWithValue("@mocc", TextBox30.Text);
+                com1.Parameters.AddWithValue("@ocourse", TextBox3.Text);
+                com1.Parameters.AddWithValue("@duenroll", TextBox26.Text);
 
                 com1.ExecuteNonQuery();
                 Response.Redirect("Basic_Details_Form.aspx");
