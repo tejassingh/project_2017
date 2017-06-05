@@ -515,7 +515,7 @@
         </table>
     <p class="auto-style80">
         &nbsp;</p>
-        <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
+        <asp:Button ID="Button3" runat="server" Text="Submit" OnClick="Button3_Click" />
     </form>
     <p class="auto-style80">
         &nbsp;</p>
