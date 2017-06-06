@@ -277,7 +277,7 @@
             <strong>Are you pursuing any other course in this or any other University/Instituition?</strong></td>
                 <td class="auto-style83">
             <strong>
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style57" RepeatDirection="Horizontal" Width="187px">
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style57" RepeatDirection="Horizontal" Width="187px" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                             <asp:ListItem>YES</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>
                         </asp:RadioButtonList>
