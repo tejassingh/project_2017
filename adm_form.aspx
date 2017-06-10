@@ -5,13 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet" />
+    <link href = "https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel = "stylesheet" />
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  
     <script type="text/javascript">
         $(document).ready(function () {
             $('#tabs').tabs();
+            $('#tabs').tabs("disable",3);
         });
     </script>
     
@@ -192,7 +193,7 @@
             border-style: solid;
             border-width: 1px;
             padding: 1px 4px;
-            height: 272px;
+            height: 275px;
         }
     </style>
 </head>
@@ -200,8 +201,10 @@
     <form id="form1" runat="server">
         <div id="tabs">
             <ul>
-                <li><a href="#Basic">Basoc Details</a></li>
+                <li><a href="#Basic">Basic Details</a></li>
                 <li><a href="#Research">Research Details</a></li>
+                <li><a href="#Upload_Doc">Upload Documents</a></li>
+                <li><a href="#Fees">Pay Fees</a></li>
             </ul>
             <div id="Basic">
         <div class="auto-style80">
@@ -535,6 +538,12 @@
     <p class="auto-style80">
         &nbsp;</p>
         <asp:Button ID="Button3" runat="server" Text="Button2" />
+    </div>
+    <div id="Upload_Doc">
+
+    </div>
+    <div id="Fees">
+
     </div>
     </div>
     </form>
