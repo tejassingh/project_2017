@@ -187,6 +187,13 @@
             height: 23px;
             text-align: justify;
         }
+        .auto-style134 {
+            width: 1004px;
+            border-style: solid;
+            border-width: 1px;
+            padding: 1px 4px;
+            height: 272px;
+        }
     </style>
 </head>
 <body>
@@ -449,7 +456,7 @@
                 </td>
             </tr>
         </table>
-		<div class="auto-style24">
+		<div class="auto-style134">
 		    <span class="auto-style3">
             <br />
             UNDERTAKING DECLARATION:<br />
