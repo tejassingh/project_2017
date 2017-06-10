@@ -8,17 +8,21 @@
     <link href = "https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel = "stylesheet" />
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
  
     <script type="text/javascript">
+      
+
         $(document).ready(function () {
             $('#tabs').tabs({
                 disabled: [1,2,3]
             });
-            $('#Next1').click(function () {
+   /*             $('#Next1').click(function () {
                 $('#tabs').tabs("enable", 1);
                 $('#tabs').tabs("option", "active", 1);
                 $('#tabs').tabs("disable", 0);
             });
+    */
             $('#Previous1').click(function () {
                 $('#tabs').tabs("enable", 0);
                 $('#tabs').tabs("option", "active", 0);
@@ -255,7 +259,7 @@
                 <asp:ListItem>Operational Research</asp:ListItem>
                 <asp:ListItem>Statistics</asp:ListItem>
             </asp:DropDownList>
-            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment"></asp:RequiredFieldValidator>
+            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1"></asp:RequiredFieldValidator>
 &nbsp;</div>
         <p class="auto-style77">
             <strong>Basic Details:</strong></p>
@@ -264,7 +268,7 @@
                 <td class="auto-style9"><strong>Address in Delhi:</td>
                 <td class="auto-style10">
                     <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style12">Pincode:</td>
                 <td class="auto-style9">
@@ -292,7 +296,7 @@
                 <td class="auto-style64">
                     <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Same as Address in Delhi" Width="250px" />
                     <asp:TextBox ID="TextBox_Per_Add" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Per_Add_TextChanged"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_Per_Add" ErrorMessage="It must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_Per_Add" ErrorMessage="It must not be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style65">Pincode:</td>
                 <td class="auto-style63">
@@ -458,8 +462,10 @@
             </tr>
         </table>
                 <p class="auto-style135">
-                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" ValidationGroup="page1" OnClick="Next1_Click" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <asp:Button ID="test1" runat="server" Text="Test" />
+                </p>
                 <p class="auto-style80">
                     &nbsp;</p>
     </div>
