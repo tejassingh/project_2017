@@ -594,6 +594,15 @@
             </strong>
     </div>
     <div id="Upload_Doc">
+       
+           <asp:FileUpload ID="FileUpload1" runat="server" />
+           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" />
+        
+           <br />
+           <br />
+           <br />
+           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
+        
         <br />
         <br />
         <br />
