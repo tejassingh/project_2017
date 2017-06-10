@@ -11,8 +11,43 @@
  
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#tabs').tabs();
-            $('#tabs').tabs("disable",3);
+            $('#tabs').tabs({
+                disabled: [1,2,3]
+            });
+            $('#Next1').click(function () {
+                $('#tabs').tabs("enable", 1);
+                $('#tabs').tabs("option", "active", 1);
+                $('#tabs').tabs("disable", 0);
+            });
+            $('#Previous1').click(function () {
+                $('#tabs').tabs("enable", 0);
+                $('#tabs').tabs("option", "active", 0);
+                $('#tabs').tabs("disable", 1);
+            });
+            $('#Next2').click(function () {
+                $('#tabs').tabs("enable", 2);
+                $('#tabs').tabs("option", "active", 2);
+                $('#tabs').tabs("disable", 1);
+            });
+            $('#Previous2').click(function () {
+                $('#tabs').tabs("enable", 1);
+                $('#tabs').tabs("option", "active", 1);
+                $('#tabs').tabs("disable", 2);
+            });
+            $('#Next3').click(function () {
+                $('#tabs').tabs("enable", 3);
+                $('#tabs').tabs("option", "active", 3);
+                $('#tabs').tabs("disable", 2);
+            });
+            $('#Previous3').click(function () {
+                $('#tabs').tabs("enable", 2);
+                $('#tabs').tabs("option", "active", 2);
+                $('#tabs').tabs("disable", 3);
+            });
+            $('#Next4').click(function () {
+                alert('Submitted Succesfully')
+            });
+            
         });
     </script>
     
@@ -193,7 +228,11 @@
             border-style: solid;
             border-width: 1px;
             padding: 1px 4px;
-            height: 275px;
+            height: 337px;
+        }
+        .auto-style135 {
+            text-align: justify;
+            margin-left: 200px;
         }
     </style>
 </head>
@@ -418,8 +457,11 @@
                 </td>
             </tr>
         </table>
-    <p class="auto-style80">
-        &nbsp;</p>
+                <p class="auto-style135">
+                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+                <p class="auto-style80">
+                    &nbsp;</p>
     </div>
     <div id="Research">
     <p class="auto-style77">
@@ -537,12 +579,38 @@
         </table>
     <p class="auto-style80">
         &nbsp;</p>
-        <asp:Button ID="Button3" runat="server" Text="Button2" />
+        <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" />
+            </strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>
+        <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" />
+            </strong>
     </div>
     <div id="Upload_Doc">
+        <br />
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous2" runat="server" OnClick="Button4_Click" Text="Previous" />
+            </strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>
+        <asp:Button ID="Next3" runat="server" Text="Next" Width="70px" />
+            </strong>
 
     </div>
     <div id="Fees">
+
+        <br />
+        <br />
+        <br />
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous3" runat="server" OnClick="Button4_Click" Text="Previous" />
+            </strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <strong>
+        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" />
+            </strong>
 
     </div>
     </div>

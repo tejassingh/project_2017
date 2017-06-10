@@ -124,5 +124,15 @@ namespace PhD
                 TextBox3.Enabled = false;
             }
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
