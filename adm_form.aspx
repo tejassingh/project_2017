@@ -5,6 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet" />
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tabs').tabs();
+        });
+    </script>
+    
     <style type="text/css">
         .auto-style1 {
             color: #FF0000;
@@ -181,6 +191,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div id="tabs">
+            <ul>
+                <li><a href="#Basic">Basoc Details</a></li>
+                <li><a href="#Research">Research Details</a></li>
+            </ul>
+            <div id="Basic">
         <div class="auto-style80">
             <strong><span class="auto-style2">Department :</span>
             <asp:DropDownList ID="DropDownListDepartment" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListDepartment_SelectedIndexChanged1">
@@ -394,6 +410,8 @@
         </table>
     <p class="auto-style80">
         &nbsp;</p>
+    </div>
+    <div id="Research">
     <p class="auto-style77">
         <strong>Research Details:</strong></p>
         <table class="auto-style4">
@@ -510,6 +528,8 @@
     <p class="auto-style80">
         &nbsp;</p>
         <asp:Button ID="Button3" runat="server" Text="Button2" />
+    </div>
+    </div>
     </form>
     <p class="auto-style80">
         &nbsp;</p>
