@@ -17,12 +17,12 @@
             $('#tabs').tabs({
                 disabled: [1,2,3]
             });
-   /*             $('#Next1').click(function () {
+              $('#Next1').click(function () {
                 $('#tabs').tabs("enable", 1);
                 $('#tabs').tabs("option", "active", 1);
                 $('#tabs').tabs("disable", 0);
             });
-    */
+    
             $('#Previous1').click(function () {
                 $('#tabs').tabs("enable", 0);
                 $('#tabs').tabs("option", "active", 0);
@@ -259,7 +259,7 @@
                 <asp:ListItem>Operational Research</asp:ListItem>
                 <asp:ListItem>Statistics</asp:ListItem>
             </asp:DropDownList>
-            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1"></asp:RequiredFieldValidator>
+            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
 &nbsp;</div>
         <p class="auto-style77">
             <strong>Basic Details:</strong></p>
@@ -272,23 +272,23 @@
                 </td>
                 <td class="auto-style12">Pincode:</td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style9">Telephone:</td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" ></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="(011)?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style12">Mobile No:</td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_MobileNo" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="RegularExpressionValidator" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d">It must be numeric</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -302,7 +302,7 @@
                 <td class="auto-style63">
                     <asp:TextBox ID="TextBox_Per_Pincode" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TextBox_Per_Pincode" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TextBox_Per_Pincode" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -310,13 +310,13 @@
                 <td class="auto-style64">
                     <asp:TextBox ID="TextBox_Per_Telephone" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style65">Mobile No:</td>
                 <td class="auto-style63">
                     <asp:TextBox ID="TextBox_Per_MobileNo" runat="server"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="(0( \d|\d ))?\d\d \d\d(\d \d| \d\d )\d\d"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
                     </strong>
                     </strong>
                 </td>
