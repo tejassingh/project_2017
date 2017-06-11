@@ -35,7 +35,7 @@ namespace PhD
         {
             if (CheckBox1.Checked)
             {
-                    TextBox_Per_Add.Text = TextBox_Address_Delhi.Text;
+                TextBox_Per_Add.Text = TextBox_Address_Delhi.Text;
 
             }
             else
@@ -91,12 +91,12 @@ namespace PhD
 
         protected void DropDownListDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void TextBox37_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -433,7 +433,9 @@ namespace PhD
                 lblmsg.Text = "Please Select a valid file to upload.";
                 lblmsg.ForeColor = System.Drawing.Color.Red;
             }
-        }
-    
 
+        }
+    }
 }
+       
+    
