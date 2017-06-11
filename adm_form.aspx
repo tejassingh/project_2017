@@ -538,11 +538,52 @@
     <p class="auto-style80">
         &nbsp;</p>
         <asp:Button ID="Button3" runat="server" Text="Button2" />
+        <br />
     </div>
     <div id="Upload_Doc">
        
            <asp:FileUpload ID="FileUpload1" runat="server" />
-           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" />
+           &nbsp;
+           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" CausesValidation="False" />
+        
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Marksheet<br />
+        
+           <br />
+           <asp:FileUpload ID="FileUpload2" runat="server" />
+           <asp:Button ID="upload_button1" runat="server" CausesValidation="False" OnClick="upload_button1_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X Marksheet<br />
+           <br />
+           <asp:FileUpload ID="FileUpload3" runat="server" />
+           <asp:Button ID="Upload_button2" runat="server" CausesValidation="False" OnClick="Upload_button2_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Certificate<br />
+           <br />
+           <asp:FileUpload ID="FileUpload4" runat="server" />
+           <asp:Button ID="upload_button3" runat="server" CausesValidation="False" OnClick="upload_button3_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X&nbsp; Certificate<br />
+           <br />
+           <asp:FileUpload ID="FileUpload5" runat="server" style="width: 217px" />
+           <asp:Button ID="upload_button4" runat="server" CausesValidation="False" OnClick="upload_button4_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graduation Marksheet<br />
+           <br />
+           <asp:FileUpload ID="FileUpload6" runat="server" />
+           <asp:Button ID="upload_button5" runat="server" CausesValidation="False" OnClick="upload_button5_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Marksheet<br />
+           <br />
+           <asp:FileUpload ID="FileUpload7" runat="server" />
+           <asp:Button ID="upload_button6" runat="server" CausesValidation="False" OnClick="upload_button6_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp; Graduation Certificate<br />
+           <br />
+           <asp:FileUpload ID="FileUpload8" runat="server" />
+           <asp:Button ID="upload_button7" runat="server" CausesValidation="False" OnClick="upload_button7_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Certificate<br />
+           <br />
+           <asp:FileUpload ID="FileUpload9" runat="server" />
+           <asp:Button ID="upload_button8" runat="server" CausesValidation="False" OnClick="upload_button8_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature<br />
+           <br />
+           <asp:FileUpload ID="FileUpload10" runat="server" />
+           <asp:Button ID="upload_button9" runat="server" CausesValidation="False" OnClick="upload_button9_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Photo<br />
         
            <br />
            <br />

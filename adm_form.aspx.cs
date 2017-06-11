@@ -155,5 +155,285 @@ namespace PhD
                 lblmsg.ForeColor = System.Drawing.Color.Red;
             }
         }
-    }
+
+        protected void upload_button1_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void Upload_button2_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button3_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button4_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button5_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button6_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button7_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button8_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button9_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".doc" && fileExtension.ToLower() != ".docx")
+                {
+                    lblmsg.Text = "Only files with .doc or .docx extension are allowed";
+                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        lblmsg.Text = "Maximum file size 2MB exceeded.";
+                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    lblmsg.Text = "File Upload";
+                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblmsg.Text = "Please Select a valid file to upload.";
+                lblmsg.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+    
+
 }
