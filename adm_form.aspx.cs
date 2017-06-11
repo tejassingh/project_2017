@@ -9,7 +9,16 @@ namespace PhD
 {
     public partial class admission_form : System.Web.UI.Page
     {
-       
+        private enum TabIndex
+        {
+            DEFAULT = 0,
+            ONE = 1,
+            TWO = 2,
+            THREE = 3
+            
+        }
+
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -153,7 +162,7 @@ namespace PhD
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            
+            SetSelectedTab(TabIndex.DEFAULT);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -165,17 +174,43 @@ namespace PhD
 
         protected void Next1_Click(object sender, EventArgs e)
         {
-            
+            SetSelectedTab(TabIndex.ONE);
         }
 
         protected void Next2_Click(object sender, EventArgs e)
         {
-            
+            SetSelectedTab(TabIndex.TWO);
         }
 
         protected void test1_Click(object sender, EventArgs e)
         {
-            Response.Write("chal ja na!");
+            
+        }
+
+        private void SetSelectedTab(TabIndex tabIndex)
+        {
+            Hdnfldtabs.Value = ((int)tabIndex).ToString();
+        }
+
+
+        protected void Previous2_Click(object sender, EventArgs e)
+        {
+            SetSelectedTab(TabIndex.ONE);
+        }
+
+        protected void Next3_Click(object sender, EventArgs e)
+        {
+            SetSelectedTab(TabIndex.THREE);
+        }
+
+        protected void Previous3_Click(object sender, EventArgs e)
+        {
+            SetSelectedTab(TabIndex.TWO);
+        }
+
+        protected void Next4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
