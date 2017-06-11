@@ -190,6 +190,7 @@ namespace PhD
         private void SetSelectedTab(TabIndex tabIndex)
         {
             Hdnfldtabs.Value = ((int)tabIndex).ToString();
+            
         }
 
 

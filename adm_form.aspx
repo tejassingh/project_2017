@@ -293,6 +293,7 @@
 <body>
     <form id="form1" runat="server">
         <asp:HiddenField ID="Hdnfldtabs" runat="server" Value="0" />
+        <asp:HiddenField ID="department_hidden" runat="server" />
 
 
         <div id="tabs">
@@ -333,7 +334,7 @@
                 </td>
                 <td class="auto-style12">Pincode:</td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True" MaxLength="6"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                     <br />
@@ -343,13 +344,13 @@
             <tr>
                 <td class="auto-style9">Telephone:</td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="10" ></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style12">Mobile No:</td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True" MaxLength="10"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
             <strong>
@@ -367,7 +368,7 @@
                 </td>
                 <td class="auto-style65">Pincode:</td>
                 <td class="auto-style63">
-                    <asp:TextBox ID="TextBox_Per_Pincode" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Per_Pincode" runat="server" MaxLength="6"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TextBox_Per_Pincode" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                     <br />
@@ -379,14 +380,14 @@
             <tr>
                 <td class="auto-style63">Telephone:</td>
                 <td class="auto-style64">
-                    <asp:TextBox ID="TextBox_Per_Telephone" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Per_Telephone" runat="server" MaxLength="10"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
                     <br />
                 </td>
                 <td class="auto-style65">Mobile No:</td>
                 <td class="auto-style63">
-                    <asp:TextBox ID="TextBox_Per_MobileNo" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Per_MobileNo" runat="server" MaxLength="10"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
                     </strong>
@@ -655,7 +656,7 @@
     <p class="auto-style80">
         &nbsp;</p>
         <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" ValidationGroup="page2" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" ValidationGroup="page1" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
@@ -668,32 +669,46 @@
            <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" />
         
            <br />
+        
+           <br />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:TextBox ID="test_txt1" runat="server"></asp:TextBox>
+           <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
            <br />
            <br />
            <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
         
+           <br />
+           <br />
+        
         <br />
         <br />
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous2" runat="server" OnClick="Previous2_Click" Text="Previous" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous2" runat="server" OnClick="Previous2_Click" Text="Previous" ValidationGroup="page2" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next3" runat="server" Text="Next" Width="70px" OnClick="Next3_Click" />
+        <asp:Button ID="Next3" runat="server" Text="Next" Width="70px" OnClick="Next3_Click" ValidationGroup="page3" />
             </strong>
 
     </div>
     <div id="Fees">
 
         <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="test_txt2" runat="server"></asp:TextBox>
         <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="test_txt2" ErrorMessage="Yahan bhi" ForeColor="Red" ValidationGroup="page4"></asp:RequiredFieldValidator>
         <br />
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous3" runat="server" OnClick="Previous3_Click" Text="Previous" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous3" runat="server" OnClick="Previous3_Click" Text="Previous" ValidationGroup="page3" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" OnClick="Next4_Click" />
+        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" OnClick="Next4_Click" ValidationGroup="page4" />
             </strong>
 
     </div>
