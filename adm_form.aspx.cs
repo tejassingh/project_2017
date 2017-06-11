@@ -210,10 +210,7 @@ namespace PhD
             SetSelectedTab(TabIndex.DEFAULT);
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
-        {
 
-        }
 
        
 
