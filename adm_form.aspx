@@ -15,9 +15,32 @@
 
 
         function Departmentindexchange() {
-            var txtbox = document.getElementById('Textbox37');
+           // var txtbox = document.getElementById("Textbox37");
             var ddmenu = document.getElementById('DropDownListDepartment');
-            txtbox.text = ddmenu.selecteditem;
+            var txt = ddmenu.options[ddmenu.selectedIndex].text;
+           document.getElementById("demo").innerHTML=txt;
+           document.getElementById("demo").style.backgroundColor='gray';
+                  
+            //alert(txt);        
+        }
+
+        function Sameaddrchange() {
+            var chckbx = document.getElementById("CheckBox1").checked;
+            
+            var txtbox1 = document.getElementById("TextBox_Address_Delhi");
+            var txtbox2 = document.getElementById("TextBox_Per_Add");
+            if (chckbx == true)
+                txtbox2.value = txtbox1.value;
+            else
+                txtbox2.value = "";
+        }
+
+        function tabswitch(str1) {
+            if (Page_ClientValidate(str1))
+                return true;
+            else
+                return false;
+
 
         }
 
@@ -256,6 +279,9 @@
             text-align: justify;
             margin-left: 200px;
         }
+        .auto-style136 {
+            color: #FF3300;
+        }
     </style>
 </head>
 <body>
@@ -329,7 +355,7 @@
             <tr>
                 <td class="auto-style63">Permanent Address:</td>
                 <td class="auto-style64">
-                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Same as Address in Delhi" Width="250px" />
+                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="false" onchange="Sameaddrchange()" Text="Same as Address in Delhi" Width="250px" />
                     <asp:TextBox ID="TextBox_Per_Add" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Per_Add_TextChanged"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_Per_Add" ErrorMessage="It must not be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
@@ -502,9 +528,9 @@
             </tr>
         </table>
                 <p class="auto-style135">
-                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" OnClick="Next1_Click" ValidationGroup="page1" />
+                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" OnClick="Next1_Click" ValidationGroup="page1"   />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                    <asp:Button ID="test1" runat="server" Text="Test" />
+                    <asp:Button ID="test1" runat="server" Text="Test" OnClick="test1_Click" />
                 </p>
                 <p class="auto-style80">
                     &nbsp;</p>
@@ -552,10 +578,7 @@
             <br />
             UNDERTAKING DECLARATION:<br />
 		<br />
-		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of
-            <asp:TextBox ID="TextBox37" runat="server" Enabled="False" OnTextChanged="TextBox37_TextChanged1"></asp:TextBox>
-            &nbsp; 
-&nbsp;University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
+		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <span id="demo"> <span class="auto-style136">SELECT DEPARTMENT</span> </span> University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
 		b)I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
             <br />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment"></asp:RequiredFieldValidator>

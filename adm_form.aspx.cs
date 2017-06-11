@@ -9,14 +9,7 @@ namespace PhD
 {
     public partial class admission_form : System.Web.UI.Page
     {
-        private enum TabIndex
-        {
-            DEFAULT = 0,
-            ONE = 1,
-            TWO = 2,
-            THREE = 3
-            // you can as many as you want here
-        }
+       
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,15 +36,7 @@ namespace PhD
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (CheckBox1.Checked)
-            {
-                    TextBox_Per_Add.Text = TextBox_Address_Delhi.Text;
-
-            }
-            else
-            {
-                TextBox_Per_Add.Text = "";
-            }
+            
         }
 
         protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,7 +153,7 @@ namespace PhD
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            SetSelectedTab(TabIndex.DEFAULT);
+            
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -176,19 +161,21 @@ namespace PhD
 
         }
 
-        private void SetSelectedTab(TabIndex tabIndex)
-        {
-            Hdnfldtabs.Value = ((int)tabIndex).ToString();
-        }
+       
 
         protected void Next1_Click(object sender, EventArgs e)
         {
-            SetSelectedTab(TabIndex.ONE);
+            
         }
 
         protected void Next2_Click(object sender, EventArgs e)
         {
-            SetSelectedTab(TabIndex.TWO);
+            
+        }
+
+        protected void test1_Click(object sender, EventArgs e)
+        {
+            Response.Write("chal ja na!");
         }
     }
 }
