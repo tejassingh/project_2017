@@ -48,7 +48,13 @@
             $('#tabs').tabs();
             var currTab = $("#<%= Hdnfldtabs.ClientID %>").val();
 
+            
             $('#tabs').tabs("option", "active", currTab);
+            var arr1 = [0, 1, 2, 3];
+
+            arr1.splice(currTab, 1);
+            $('#tabs').tabs("option", "disabled", arr1);
+            
 
 
 
@@ -286,7 +292,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:HiddenField ID="Hdnfldtabs" runat="server" />
+        <asp:HiddenField ID="Hdnfldtabs" runat="server" Value="0" />
 
 
         <div id="tabs">
@@ -553,7 +559,7 @@
                 <td class="auto-style110"><strong>
             <asp:TextBox ID="TextBox_Languages0" runat="server" CssClass="auto-style53" TextMode="MultiLine"></asp:TextBox>
                     <span class="auto-style53">
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox_Languages0" ErrorMessage="It must not be empty" ForeColor="Red" CssClass="auto-style2"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox_Languages0" ErrorMessage="It must not be empty" ForeColor="Red" CssClass="auto-style2" ValidationGroup="page2"></asp:RequiredFieldValidator>
                     </span>
             </strong></td>
             </tr>
@@ -581,7 +587,7 @@
 		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <span id="demo"> <span class="auto-style136">SELECT DEPARTMENT</span> </span> University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
 		b)I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
             <br />
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page2"></asp:RequiredFieldValidator>
             </strong>
         </div>
         <p class="auto-style75">
@@ -649,11 +655,11 @@
     <p class="auto-style80">
         &nbsp;</p>
         <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" ValidationGroup="page2" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" OnClick="Next2_Click" />
+        <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" OnClick="Next2_Click" ValidationGroup="page2" />
             </strong>
     </div>
     <div id="Upload_Doc">
