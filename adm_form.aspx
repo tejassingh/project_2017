@@ -11,13 +11,28 @@
 
  
     <script type="text/javascript">
-      
+
+
+
+        function Departmentindexchange() {
+            var txtbox = document.getElementById('Textbox37');
+            var ddmenu = document.getElementById('DropDownListDepartment');
+            txtbox.text = ddmenu.selecteditem;
+
+        }
 
         $(document).ready(function () {
-            $('#tabs').tabs({
-                disabled: [1,2,3]
-            });
-              $('#Next1').click(function () {
+            $('#tabs').tabs();
+            var currTab = $("#<%= Hdnfldtabs.ClientID %>").val();
+
+            $('#tabs').tabs("option", "active", currTab);
+
+
+
+
+
+
+      /*        $('#Next1').click(function () {
                 $('#tabs').tabs("enable", 1);
                 $('#tabs').tabs("option", "active", 1);
                 $('#tabs').tabs("disable", 0);
@@ -51,9 +66,12 @@
             $('#Next4').click(function () {
                 alert('Submitted Succesfully')
             });
+            */
             
         });
     </script>
+
+   
     
     <style type="text/css">
         .auto-style1 {
@@ -242,6 +260,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:HiddenField ID="Hdnfldtabs" runat="server" />
+
+
         <div id="tabs">
             <ul>
                 <li><a href="#Basic">Basic Details</a></li>
@@ -250,15 +271,23 @@
                 <li><a href="#Fees">Pay Fees</a></li>
             </ul>
             <div id="Basic">
+
+              
         <div class="auto-style80">
             <strong><span class="auto-style2">Department :</span>
-            <asp:DropDownList ID="DropDownListDepartment" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListDepartment_SelectedIndexChanged1">
+            <asp:DropDownList ID="DropDownListDepartment" runat="server"  onchange="Departmentindexchange()">
                 <asp:ListItem>Select Department</asp:ListItem>
                 <asp:ListItem>Computer Science</asp:ListItem>
                 <asp:ListItem>Mathematics</asp:ListItem>
                 <asp:ListItem>Operational Research</asp:ListItem>
                 <asp:ListItem>Statistics</asp:ListItem>
             </asp:DropDownList>
+
+          
+                
+
+
+
             &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
 &nbsp;</div>
         <p class="auto-style77">
@@ -275,6 +304,8 @@
                     <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <br />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextBox_Pincode_Delhi" ErrorMessage="Pin code cannot be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -289,6 +320,10 @@
                     <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+            <strong>
+                    <br />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="TextBox_MobileNo" ErrorMessage="Enter Mobile no." ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+            </strong>
                 </td>
             </tr>
             <tr>
@@ -303,6 +338,10 @@
                     <asp:TextBox ID="TextBox_Per_Pincode" runat="server"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TextBox_Per_Pincode" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <br />
+            <strong>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TextBox_Per_Pincode" ErrorMessage="Pin code cannot be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+            </strong>
                 </td>
             </tr>
             <tr>
@@ -311,6 +350,7 @@
                     <asp:TextBox ID="TextBox_Per_Telephone" runat="server"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
+                    <br />
                 </td>
                 <td class="auto-style65">Mobile No:</td>
                 <td class="auto-style63">
@@ -385,15 +425,15 @@
                 <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>B.A/B.Sc./B.Com.(Hons/Pass)/B.B.A./B.Tech.</strong></td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_Uni" runat="server" Height="39px" Width="160px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="TextBox_Grad_Uni"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ValidationGroup="page1" ForeColor="Red" ControlToValidate="TextBox_Grad_Uni"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_year" runat="server" Height="39px" Width="160px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox_Grad_year" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox_Grad_year" ValidationGroup="page1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_Div" runat="server" Height="39px" Width="160px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox_Grad_Div" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox_Grad_Div" ValidationGroup="page1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style106">
                     <asp:TextBox ID="TextBox8" runat="server" Height="39px" OnTextChanged="TextBox8_TextChanged" Width="160px"></asp:TextBox>
@@ -462,7 +502,7 @@
             </tr>
         </table>
                 <p class="auto-style135">
-                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" ValidationGroup="page1" OnClick="Next1_Click" />
+                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" OnClick="Next1_Click" ValidationGroup="page1" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     <asp:Button ID="test1" runat="server" Text="Test" />
                 </p>
@@ -590,7 +630,7 @@
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" />
+        <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" OnClick="Next2_Click" />
             </strong>
     </div>
     <div id="Upload_Doc">

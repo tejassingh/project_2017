@@ -9,6 +9,16 @@ namespace PhD
 {
     public partial class admission_form : System.Web.UI.Page
     {
+        private enum TabIndex
+        {
+            DEFAULT = 0,
+            ONE = 1,
+            TWO = 2,
+            THREE = 3
+            // you can as many as you want here
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -110,7 +120,7 @@ namespace PhD
 
         protected void DropDownListDepartment_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            TextBox37.Text = DropDownListDepartment.SelectedItem.Text;
+            
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,7 +168,7 @@ namespace PhD
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-
+            SetSelectedTab(TabIndex.DEFAULT);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -166,9 +176,19 @@ namespace PhD
 
         }
 
+        private void SetSelectedTab(TabIndex tabIndex)
+        {
+            Hdnfldtabs.Value = ((int)tabIndex).ToString();
+        }
+
         protected void Next1_Click(object sender, EventArgs e)
         {
-            
+            SetSelectedTab(TabIndex.ONE);
+        }
+
+        protected void Next2_Click(object sender, EventArgs e)
+        {
+            SetSelectedTab(TabIndex.TWO);
         }
     }
 }
