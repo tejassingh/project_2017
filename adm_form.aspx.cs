@@ -155,5 +155,70 @@ namespace PhD
                 lblmsg.ForeColor = System.Drawing.Color.Red;
             }
         }
+
+        protected void Next1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Upload_button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void upload_button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Next3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Next4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
