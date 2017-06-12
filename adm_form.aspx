@@ -92,10 +92,11 @@
                 $('#tabs').tabs("option", "active", 2);
                 $('#tabs').tabs("disable", 3);
             });
+            */
             $('#Next4').click(function () {
                 alert('Submitted Succesfully')
             });
-            */
+            
             
         });
     </script>
@@ -675,7 +676,7 @@
            <asp:TextBox ID="test_txt1" runat="server"></asp:TextBox>
            <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="test_txt1" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
            <br />
            <br />
            <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
@@ -701,14 +702,14 @@
         <asp:TextBox ID="test_txt2" runat="server"></asp:TextBox>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="test_txt2" ErrorMessage="Yahan bhi" ForeColor="Red" ValidationGroup="page4"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="test_txt2" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page4"></asp:RequiredFieldValidator>
         <br />
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous3" runat="server" OnClick="Previous3_Click" Text="Previous" ValidationGroup="page3" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" OnClick="Next4_Click" ValidationGroup="page4" />
+        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" ValidationGroup="page4" />
             </strong>
 
     </div>
