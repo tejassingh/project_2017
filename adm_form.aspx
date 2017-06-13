@@ -298,9 +298,6 @@
             text-align: justify;
             margin-left: 200px;
         }
-        .auto-style136 {
-            color: #FF3300;
-        }
         .auto-style137 {
             margin-left: 80px;
         }
@@ -611,7 +608,7 @@
 		b)I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
             <br />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page2"></asp:RequiredFieldValidator>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+      
             </strong>
         </div>
         <p class="auto-style75">
@@ -781,13 +778,9 @@
            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
            <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
            <br />
            <br />
-           <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
-       
-           <asp:FileUpload ID="FileUpload1" runat="server" />
-           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" ValidationGroup="page3" />
         
            <br />
         
