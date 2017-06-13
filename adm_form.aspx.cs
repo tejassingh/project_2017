@@ -26,6 +26,9 @@ namespace PhD
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (!IsPostBack)
+                TextBox37.Text = "Select Department";
+
         }
 
         protected void TextBox3_TextChanged(object sender, EventArgs e)
@@ -217,6 +220,7 @@ namespace PhD
         protected void Next1_Click(object sender, EventArgs e)
         {
             SetSelectedTab(TabIndex.ONE);
+            TextBox37.Text = DropDownListDepartment.Text;
         }
 
         protected void Next2_Click(object sender, EventArgs e)

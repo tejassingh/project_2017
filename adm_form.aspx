@@ -15,11 +15,14 @@
 
 
         function Departmentindexchange() {
-           // var txtbox = document.getElementById("Textbox37");
             var ddmenu = document.getElementById('DropDownListDepartment');
             var txt = ddmenu.options[ddmenu.selectedIndex].text;
-           document.getElementById("demo").innerHTML=txt;
-           document.getElementById("demo").style.backgroundColor='gray';
+            var txtbox = document.getElementById("TextBox37").value = txt;
+
+
+           // document.getElementById("Label1").innerHTML=txt;
+            
+          // document.getElementById("demo").style.backgroundColor='gray';
                   
             //alert(txt);        
         }
@@ -308,7 +311,7 @@
               
         <div class="auto-style80">
             <strong><span class="auto-style2">Department :</span>
-            <asp:DropDownList ID="DropDownListDepartment" runat="server"  onchange="Departmentindexchange()">
+            <asp:DropDownList ID="DropDownListDepartment" runat="server" >
                 <asp:ListItem>Select Department</asp:ListItem>
                 <asp:ListItem>Computer Science</asp:ListItem>
                 <asp:ListItem>Mathematics</asp:ListItem>
@@ -535,7 +538,7 @@
             </tr>
         </table>
                 <p class="auto-style135">
-                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" OnClick="Next1_Click" ValidationGroup="page1"   />
+                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" BorderWidth="0" OnClick="Next1_Click" ValidationGroup="page1"   />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     <asp:Button ID="test1" runat="server" Text="Test" OnClick="test1_Click" />
                 </p>
@@ -585,7 +588,7 @@
             <br />
             UNDERTAKING DECLARATION:<br />
 		<br />
-		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <span id="demo"> <span class="auto-style136">SELECT DEPARTMENT</span> </span> University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
+		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <asp:TextBox ID="TextBox37" runat="server" ReadOnly="True"></asp:TextBox> University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
 		b)I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
             <br />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page2"></asp:RequiredFieldValidator>
