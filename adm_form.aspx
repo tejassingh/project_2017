@@ -57,7 +57,7 @@
 
             
             $('#tabs').tabs("option", "active", currTab);
-            var arr1 = [0, 1, 2, 3];
+            var arr1 = [0, 1, 2, 3,4];
 
             arr1.splice(currTab, 1);
             $('#tabs').tabs("option", "disabled", arr1);
@@ -138,7 +138,7 @@
         }
         .auto-style12 {
             height: 69px;
-            width: 125px;
+            width: 133px;
             text-align: justify;
         }
         .auto-style22 {
@@ -174,7 +174,7 @@
             height: 70px;
         }
         .auto-style65 {
-            width: 125px;
+            width: 133px;
             text-align: justify;
             height: 70px;
         }
@@ -309,7 +309,8 @@
                 <li><a href="#Basic">Basic Details</a></li>
                 <li><a href="#Research">Research Details</a></li>
                 <li><a href="#Upload_Doc">Upload Documents</a></li>
-                <li><a href="#Fees">Pay Fees</a></li>
+                <li><a href="#View_Form">View Form</a></li>
+                <li><a href="#Print_Form">Print Form</a></li>
             </ul>
             <div id="Basic">
 
@@ -335,12 +336,12 @@
             <strong>Basic Details:</strong></p>
         <table class="auto-style4">
             <tr>
-                <td class="auto-style9"><strong>Address in Delhi:</td>
+                <td class="auto-style9"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
                 <td class="auto-style10">
                     <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
-                <td class="auto-style12">Pincode:</td>
+                <td class="auto-style12">Pincode:&nbsp; <span class="auto-style22">*</span></td>
                 <td class="auto-style9">
                     <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True" MaxLength="6"></asp:TextBox>
                     <br />
@@ -350,13 +351,14 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Telephone:</td>
+                <td class="auto-style9">Telephone:&nbsp; </td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="10" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="10"  ></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="(\(\d{3}\)|\d{3}-)?\d{8}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
-                <td class="auto-style12">Mobile No:</td>
+                <td class="auto-style12">Mobile No:&nbsp; <span class="auto-style22">*</span><br />
+                </td>
                 <td class="auto-style9">
                     <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True" MaxLength="10"></asp:TextBox>
                     <br />
@@ -547,7 +549,7 @@
             </tr>
         </table>
                 <p class="auto-style135">
-                    <asp:Button ID="Next1" runat="server" Text="Save &amp; Next" Width="80px" OnClick="Next1_Click" ValidationGroup="page1" CssClass="ui-priority-primary"   />
+                    <asp:Button ID="Next1" runat="server" Text="Save &amp; Next" Width="201px" OnClick="Next1_Click" ValidationGroup="page1" CssClass="ui-priority-primary"   />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     <asp:Button ID="test1" runat="server" Text="Test" OnClick="test1_Click" />
                 </p>
@@ -607,13 +609,13 @@
         <p class="auto-style75">
             <table class="auto-style54">
                 <tr>
-                    <td class="auto-style67"><strong>Are you currently employed? </strong></td>
+                    <td class="auto-style67"><strong>Are you currently employed?&nbsp; </strong></td>
                     <td class="auto-style80">
                         <asp:RadioButtonList ID="RadioButtonList2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal">
                             <asp:ListItem>YES</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>
                         </asp:RadioButtonList>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ErrorMessage="Select Yes/No" ForeColor="Red" ValidationGroup="page2">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ErrorMessage="Select Yes/No" ForeColor="Red" ValidationGroup="page2" ControlToValidate="RadioButtonList2">*</asp:RequiredFieldValidator>
                     </td>
                 </tr>
             </table>
@@ -708,7 +710,7 @@
             </strong>
 
     </div>
-    <div id="Fees">
+    <div id="View_Form">
 
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -726,6 +728,9 @@
             </strong>
 
     </div>
+            <div id="Print_Form">
+
+            </div>
     </div>
     </form>
     <p class="auto-style80">
