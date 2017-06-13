@@ -288,6 +288,9 @@
         .auto-style136 {
             color: #FF3300;
         }
+        .auto-style137 {
+            margin-left: 80px;
+        }
     </style>
 </head>
 <body>
@@ -344,7 +347,7 @@
             <tr>
                 <td class="auto-style9">Telephone:</td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="10" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="12" ></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
@@ -663,11 +666,106 @@
         <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" OnClick="Next2_Click" ValidationGroup="page2" />
             </strong>
     </div>
-    <div id="Upload_Doc">
-       
-           <asp:FileUpload ID="FileUpload1" runat="server" />
-           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" />
+    <div id="Upload_Doc" class="auto-style137">
+           <asp:FileUpload ID="FileUpload2" runat="server" />
+           &nbsp;
+           <asp:Button ID="Button1" runat="server" Text="Upload File" OnClick="upload_button_Click" CausesValidation="False" />
         
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+        
+           <br />
+           <asp:FileUpload ID="FileUpload3" runat="server" />
+           <asp:Button ID="upload_button1" runat="server" CausesValidation="False" OnClick="upload_button1_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg1" runat="server" Font-Bold="True"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload4" runat="server" />
+           <asp:Button ID="Upload_button2" runat="server" CausesValidation="False" OnClick="Upload_button2_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg2" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload5" runat="server" />
+           <asp:Button ID="upload_button3" runat="server" CausesValidation="False" OnClick="upload_button3_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X&nbsp; Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg3" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload6" runat="server" style="width: 217px" />
+           <asp:Button ID="upload_button4" runat="server" CausesValidation="False" OnClick="upload_button4_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graduation Marksheet&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg4" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload7" runat="server" />
+           <asp:Button ID="upload_button5" runat="server" CausesValidation="False" OnClick="upload_button5_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Marksheet&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg5" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload8" runat="server" Width="234px" />
+           &nbsp;<asp:Button ID="upload_button6" runat="server" CausesValidation="False" OnClick="upload_button6_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp; Graduation Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg6" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload9" runat="server" />
+           <asp:Button ID="upload_button7" runat="server" CausesValidation="False" OnClick="upload_button7_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Certificate&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg7" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload10" runat="server" />
+           <asp:Button ID="upload_button8" runat="server" CausesValidation="False" OnClick="upload_button8_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg8" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload11" runat="server" />
+           <asp:Button ID="upload_button9" runat="server" CausesValidation="False" OnClick="upload_button9_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Photo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg9" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <br />
+           <asp:Button ID="button_download" runat="server" Width="167px" CausesValidation="False" OnClick="button_download_Click" Text="Download" />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download the document and get attested by the Head of the Department<br />
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload12" runat="server" />
+&nbsp;&nbsp;
+           <asp:Button ID="upload_button10" runat="server" CausesValidation="False" Text="Upload file" Width="141px" />
+           &nbsp;&nbsp; File attested by the Head of the Department&nbsp;&nbsp;
+           <asp:Label ID="lblmsg10" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+        
+           <br />
+        
+           <br />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+           <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
+           <br />
+           <br />
+           <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
+       
+         
            <br />
         
            <br />
@@ -678,7 +776,6 @@
            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
            <br />
            <br />
-           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
         
            <br />
            <br />
