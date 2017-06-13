@@ -594,10 +594,19 @@ namespace PhD
         }
 
 
+   
 
 
 
 
-       
+
+
+
+
+        protected void Next4_Click1(object sender, EventArgs e)
+        {
+            Session["mytext"] = TextBox_MobileNo.Text;
+            Response.Redirect("~/display_form.aspx");
+        }
     }
 }
