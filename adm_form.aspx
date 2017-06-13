@@ -23,6 +23,9 @@
            // document.getElementById("Label1").innerHTML=txt;
             
           // document.getElementById("demo").style.backgroundColor='gray';
+            document.getElementById("demo").innerHTML=txt;
+            document.getElementById("demo").style.backgroundColor='gray';
+            //txtbox.text = txt;
                   
             //alert(txt);        
         }
@@ -32,10 +35,16 @@
             
             var txtbox1 = document.getElementById("TextBox_Address_Delhi");
             var txtbox2 = document.getElementById("TextBox_Per_Add");
-            if (chckbx == true)
+            var txtbox3 = document.getElementById("TextBox_Pincode_Delhi");
+            var txtbox4 = document.getElementById("TextBox_Per_Pincode");
+            if (chckbx == true) {
                 txtbox2.value = txtbox1.value;
-            else
+                txtbox4.value = txtbox3.value;
+            }
+            else {
                 txtbox2.value = "";
+                txtbox4.value = "";
+            }
         }
 
         function tabswitch(str1) {
@@ -53,7 +62,7 @@
 
             
             $('#tabs').tabs("option", "active", currTab);
-            var arr1 = [0, 1, 2, 3];
+            var arr1 = [0, 1, 2, 3,4];
 
             arr1.splice(currTab, 1);
             $('#tabs').tabs("option", "disabled", arr1);
@@ -95,10 +104,11 @@
                 $('#tabs').tabs("option", "active", 2);
                 $('#tabs').tabs("disable", 3);
             });
+            */
             $('#Next4').click(function () {
                 alert('Submitted Succesfully')
             });
-            */
+            
             
         });
     </script>
@@ -133,7 +143,7 @@
         }
         .auto-style12 {
             height: 69px;
-            width: 125px;
+            width: 133px;
             text-align: justify;
         }
         .auto-style22 {
@@ -169,7 +179,7 @@
             height: 70px;
         }
         .auto-style65 {
-            width: 125px;
+            width: 133px;
             text-align: justify;
             height: 70px;
         }
@@ -291,6 +301,9 @@
         .auto-style136 {
             color: #FF3300;
         }
+        .auto-style137 {
+            margin-left: 80px;
+        }
     </style>
 </head>
 <body>
@@ -304,7 +317,8 @@
                 <li><a href="#Basic">Basic Details</a></li>
                 <li><a href="#Research">Research Details</a></li>
                 <li><a href="#Upload_Doc">Upload Documents</a></li>
-                <li><a href="#Fees">Pay Fees</a></li>
+                <li><a href="#View_Form">View Form</a></li>
+                <li><a href="#Print_Form">Print Form</a></li>
             </ul>
             <div id="Basic">
 
@@ -330,12 +344,12 @@
             <strong>Basic Details:</strong></p>
         <table class="auto-style4">
             <tr>
-                <td class="auto-style9"><strong>Address in Delhi:</td>
+                <td class="auto-style9"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
                 <td class="auto-style10">
                     <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
-                <td class="auto-style12">Pincode:</td>
+                <td class="auto-style12">Pincode:&nbsp; <span class="auto-style22">*</span></td>
                 <td class="auto-style9">
                     <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True" MaxLength="6"></asp:TextBox>
                     <br />
@@ -345,17 +359,18 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Telephone:</td>
+                <td class="auto-style9">Telephone:&nbsp; </td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="10" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="12" ></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="(\(\d{3}\)|\d{3}-)?\d{8}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
-                <td class="auto-style12">Mobile No:</td>
+                <td class="auto-style12">Mobile No:&nbsp; <span class="auto-style22">*</span><br />
+                </td>
                 <td class="auto-style9">
                     <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True" MaxLength="10"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled" ValidationGroup="page1"></asp:RegularExpressionValidator>
             <strong>
                     <br />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="TextBox_MobileNo" ErrorMessage="Enter Mobile no." ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
@@ -392,7 +407,7 @@
                 <td class="auto-style63">
                     <asp:TextBox ID="TextBox_Per_MobileNo" runat="server" MaxLength="10"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="\d{10}" ValidationGroup="page1"></asp:RegularExpressionValidator>
                     </strong>
                     </strong>
                 </td>
@@ -479,15 +494,19 @@
                 <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>M.A./M.Sc./M.C.A./M.Com./M.B.A./M.Tech.</strong></td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox9" runat="server" Height="39px" Width="160px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="TextBox9" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox10" runat="server" Height="39px" Width="160px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="TextBox10" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox11" runat="server" Height="39px" Width="160px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="TextBox11" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox12" runat="server" Height="39px" Width="160px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="TextBox12" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -538,7 +557,7 @@
             </tr>
         </table>
                 <p class="auto-style135">
-                    <asp:Button ID="Next1" runat="server" Text="Next" Width="70px" BorderWidth="0" OnClick="Next1_Click" ValidationGroup="page1"   />
+                    <asp:Button ID="Next1" runat="server" Text="Save &amp; Next" Width="201px" OnClick="Next1_Click" ValidationGroup="page1" CssClass="ui-priority-primary"   />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     <asp:Button ID="test1" runat="server" Text="Test" OnClick="test1_Click" />
                 </p>
@@ -598,12 +617,13 @@
         <p class="auto-style75">
             <table class="auto-style54">
                 <tr>
-                    <td class="auto-style67"><strong>Are you currently employed? </strong></td>
+                    <td class="auto-style67"><strong>Are you currently employed?&nbsp; </strong></td>
                     <td class="auto-style80">
                         <asp:RadioButtonList ID="RadioButtonList2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal">
                             <asp:ListItem>YES</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>
                         </asp:RadioButtonList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ErrorMessage="Select Yes/No" ForeColor="Red" ValidationGroup="page2" ControlToValidate="RadioButtonList2">*</asp:RequiredFieldValidator>
                     </td>
                 </tr>
             </table>
@@ -667,10 +687,107 @@
         <asp:Button ID="Next2" runat="server" Text="Next" Width="70px" OnClick="Next2_Click" ValidationGroup="page2" />
             </strong>
     </div>
-    <div id="Upload_Doc">
+    <div id="Upload_Doc" class="auto-style137">
+           <asp:FileUpload ID="FileUpload2" runat="server" />
+           &nbsp;
+           <asp:Button ID="Button1" runat="server" Text="Upload File" OnClick="upload_button_Click" CausesValidation="False" />
+        
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+        
+           <br />
+           <asp:FileUpload ID="FileUpload3" runat="server" />
+           <asp:Button ID="upload_button1" runat="server" CausesValidation="False" OnClick="upload_button1_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg1" runat="server" Font-Bold="True"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload4" runat="server" />
+           <asp:Button ID="Upload_button2" runat="server" CausesValidation="False" OnClick="Upload_button2_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg2" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload5" runat="server" />
+           <asp:Button ID="upload_button3" runat="server" CausesValidation="False" OnClick="upload_button3_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X&nbsp; Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg3" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload6" runat="server" style="width: 217px" />
+           <asp:Button ID="upload_button4" runat="server" CausesValidation="False" OnClick="upload_button4_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graduation Marksheet&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg4" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload7" runat="server" />
+           <asp:Button ID="upload_button5" runat="server" CausesValidation="False" OnClick="upload_button5_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Marksheet&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg5" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload8" runat="server" Width="234px" />
+           &nbsp;<asp:Button ID="upload_button6" runat="server" CausesValidation="False" OnClick="upload_button6_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp; Graduation Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg6" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload9" runat="server" />
+           <asp:Button ID="upload_button7" runat="server" CausesValidation="False" OnClick="upload_button7_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Certificate&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg7" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload10" runat="server" />
+           <asp:Button ID="upload_button8" runat="server" CausesValidation="False" OnClick="upload_button8_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg8" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload11" runat="server" />
+           <asp:Button ID="upload_button9" runat="server" CausesValidation="False" OnClick="upload_button9_Click" Text="Upload File" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Photo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Label ID="lblmsg9" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+           <br />
+           <br />
+           <asp:Button ID="button_download" runat="server" Width="167px" CausesValidation="False" OnClick="button_download_Click" Text="Download" />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download the document and get attested by the Head of the Department<br />
+           <br />
+           <br />
+           <asp:FileUpload ID="FileUpload12" runat="server" />
+&nbsp;&nbsp;
+           <asp:Button ID="upload_button10" runat="server" CausesValidation="False" Text="Upload file" Width="141px" />
+           &nbsp;&nbsp; File attested by the Head of the Department&nbsp;&nbsp;
+           <asp:Label ID="lblmsg10" runat="server" Font-Bold="true"></asp:Label>
+        
+           <br />
+        
+           <br />
+        
+           <br />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+           <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
+           <br />
+           <br />
+           <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
        
            <asp:FileUpload ID="FileUpload1" runat="server" />
-           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" />
+           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" ValidationGroup="page3" />
         
            <br />
         
@@ -679,10 +796,9 @@
            <asp:TextBox ID="test_txt1" runat="server"></asp:TextBox>
            <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="test_txt1" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
            <br />
            <br />
-           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
         
            <br />
            <br />
@@ -698,24 +814,27 @@
             </strong>
 
     </div>
-    <div id="Fees">
+    <div id="View_Form">
 
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="test_txt2" runat="server"></asp:TextBox>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="test_txt2" ErrorMessage="Yahan bhi" ForeColor="Red" ValidationGroup="page4"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="test_txt2" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page4"></asp:RequiredFieldValidator>
         <br />
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous3" runat="server" OnClick="Previous3_Click" Text="Previous" ValidationGroup="page3" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" OnClick="Next4_Click" ValidationGroup="page4" />
+        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" ValidationGroup="page4" />
             </strong>
 
     </div>
+            <div id="Print_Form">
+
+            </div>
     </div>
     </form>
     <p class="auto-style80">
