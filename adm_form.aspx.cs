@@ -6,6 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
 
 namespace PhD
 {
@@ -17,7 +21,7 @@ namespace PhD
             ONE = 1,
             TWO = 2,
             THREE = 3,
-            FOUR=4
+            FOUR = 4
         }
 
 
@@ -215,6 +219,7 @@ namespace PhD
                 Response.Write("ERROR:" + ex1.ToString());
             }
             SetSelectedTab(TabIndex.ONE);
+            TextBoxD2.Text = DropDownListDepartment.Text;
         }
 
         protected void Next2_Click(object sender, EventArgs e)
@@ -604,6 +609,17 @@ namespace PhD
 
 
         protected void Next4_Click1(object sender, EventArgs e)
+        {
+            SetSelectedTab(TabIndex.FOUR);
+        }
+
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+            Session["mytext"] = TextBox_MobileNo.Text;
+            Response.Redirect("~/display_form.aspx");
+        }
+
+        protected void Button4_Click1(object sender, EventArgs e)
         {
             Session["mytext"] = TextBox_MobileNo.Text;
             Response.Redirect("~/display_form.aspx");
