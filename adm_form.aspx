@@ -301,10 +301,30 @@
         .auto-style137 {
             margin-left: 80px;
         }
-    </style>
+        .auto-style138 {
+            margin-left: 41px;
+        }
+        .auto-style139 {
+            width: 100%;
+            border-style: solid;
+            border-width: 3px;
+        }
+        .auto-style140 {
+            width: 175px;
+        }
+        .auto-style141 {
+            width: 202px;
+        }
+        .auto-style142 {
+            width: 123px;
+        }
+        .auto-style143 {
+            width: 102px;
+        }
+        </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" enctype="multipart/form-data">
         <asp:HiddenField ID="Hdnfldtabs" runat="server" Value="0" />
         <asp:HiddenField ID="department_hidden" runat="server" />
 
@@ -675,7 +695,13 @@
             </tr>
         </table>
     <p class="auto-style80">
-        &nbsp;</p>
+        &nbsp;&nbsp;&nbsp; </p>
+        <p class="auto-style80">
+        &nbsp;<strong>Download the document and get attested by the Head of the Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Button ID="button_download" runat="server" Width="167px" CausesValidation="False" OnClick="button_download_Click" Text="Download" CssClass="auto-style138" />
+            </strong><br />
+           <br />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
         <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" ValidationGroup="page1" />
             </strong>
@@ -685,89 +711,190 @@
             </strong>
     </div>
     <div id="Upload_Doc" class="auto-style137">
-           <asp:FileUpload ID="FileUpload2" runat="server" />
-           &nbsp;
-           <asp:Button ID="Button1" runat="server" Text="Upload File" OnClick="upload_button_Click" CausesValidation="False" />
-        
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-        
-           <br />
-           <asp:FileUpload ID="FileUpload3" runat="server" />
-           <asp:Button ID="upload_button1" runat="server" CausesValidation="False" OnClick="upload_button1_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg1" runat="server" Font-Bold="True"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload4" runat="server" />
-           <asp:Button ID="Upload_button2" runat="server" CausesValidation="False" OnClick="Upload_button2_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg2" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload5" runat="server" />
-           <asp:Button ID="upload_button3" runat="server" CausesValidation="False" OnClick="upload_button3_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X&nbsp; Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg3" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload6" runat="server" style="width: 217px" />
-           <asp:Button ID="upload_button4" runat="server" CausesValidation="False" OnClick="upload_button4_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graduation Marksheet&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg4" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload7" runat="server" />
-           <asp:Button ID="upload_button5" runat="server" CausesValidation="False" OnClick="upload_button5_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Marksheet&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg5" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload8" runat="server" Width="234px" />
-           &nbsp;<asp:Button ID="upload_button6" runat="server" CausesValidation="False" OnClick="upload_button6_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp; Graduation Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg6" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload9" runat="server" />
-           <asp:Button ID="upload_button7" runat="server" CausesValidation="False" OnClick="upload_button7_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Certificate&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg7" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload10" runat="server" />
-           <asp:Button ID="upload_button8" runat="server" CausesValidation="False" OnClick="upload_button8_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg8" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload11" runat="server" />
-           <asp:Button ID="upload_button9" runat="server" CausesValidation="False" OnClick="upload_button9_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Photo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg9" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <br />
-           <asp:Button ID="button_download" runat="server" Width="167px" CausesValidation="False" OnClick="button_download_Click" Text="Download" />
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download the document and get attested by the Head of the Department<br />
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload12" runat="server" />
-&nbsp;&nbsp;
-           <asp:Button ID="upload_button10" runat="server" CausesValidation="False" Text="Upload file" Width="141px" />
-           &nbsp;&nbsp; File attested by the Head of the Department&nbsp;&nbsp;
-           <asp:Label ID="lblmsg10" runat="server" Font-Bold="true"></asp:Label>
+           <strong>&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <table class="auto-style139">
+               <tr>
+                   <td class="auto-style140"><strong>CLASS XII CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload1" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image1" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload1" runat="server" OnClick="upload_button1_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;&nbsp;&nbsp;&nbsp;
+                       <asp:Label ID="Label1" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="FileUpload1" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>CLASS X CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload2" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image2" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload2" runat="server" OnClick="upload_button2_Click" CausesValidation="False" style="width: 99px" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;&nbsp;
+                       <asp:Label ID="Label2" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="FileUpload2" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>CLASS XII MARKSHEET</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload3" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image3" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload3" runat="server" OnClick="upload_button3_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;&nbsp;
+                       <asp:Label ID="Label3" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="FileUpload3" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>CLASS X MARKSHEET</strong><br />
+                   </td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload4" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image4" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload4" runat="server" OnClick="upload_button4_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;&nbsp;
+                       <asp:Label ID="Label4" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>GRADUATION MARKSHEET</strong><br />
+                   </td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload5" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image5" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload5" runat="server" OnClick="upload_button5_Click"  CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;&nbsp;
+                       <asp:Label ID="Label5" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>POST-GRADUATION<br />
+                       MARKSHEET</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload6" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image6" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload6" runat="server" OnClick="upload_button6_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;&nbsp;
+                       <asp:Label ID="Label6" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>GRADUATION CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload7" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image7" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload7" runat="server" OnClick="upload_button7_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;
+                       <asp:Label ID="Label7" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>POST GRADUATION CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload8" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image8" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload8" runat="server" OnClick="upload_button8_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;
+                       <asp:Label ID="Label8" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>DOCUMENT ATTESTED BY HOD</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload9" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image9" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload9" runat="server" OnClick="upload_button9_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;
+                       <asp:Label ID="Label9" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>SIGNATURE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload10" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image10" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload10" runat="server" OnClick="upload_button10_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;
+                       <asp:Label ID="Label10" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140">P<strong>HOTO</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload11" runat="server" />
+                   </td>
+                   <td class="auto-style142">
+                       <asp:Image ID="Image11" runat="server" Height="115px" Width="124px" />
+                   </td>
+                   <td class="auto-style143">&nbsp;
+                       <asp:Button ID="Button_upload11" runat="server" OnClick="upload_button11_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td>&nbsp;
+                       <asp:Label ID="Label11" runat="server"></asp:Label>
+                       &nbsp;</td>
+               </tr>
+               <tr>
+                   <td class="auto-style140">&nbsp;</td>
+                   <td class="auto-style141">&nbsp;</td>
+                   <td class="auto-style142">&nbsp;</td>
+                   <td class="auto-style143">&nbsp;</td>
+                   <td>&nbsp;</td>
+               </tr>
+           </table>
         
            <br />
         

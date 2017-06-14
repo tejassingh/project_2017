@@ -258,7 +258,39 @@ namespace PhD
 
         }
 
-        protected void upload_button_Click(object sender, EventArgs e)
+        protected void upload_button1_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                {
+                    Label1.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label1.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    if (fileSize > 2097152)
+                    {
+                        Label1.Text = "Maximum file size 2MB exceeded.";
+                        Label1.ForeColor = System.Drawing.Color.Red;
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
+                    Session["ImageBytes"] = FileUpload1.FileBytes;
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label1.Text = "File Uploaded";
+                    Label1.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                Label1.Text = "Please Select a valid file to upload.";
+                Label1.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+        protected void upload_button2_Click(object sender, EventArgs e)
         {
             if (FileUpload2.HasFile)
             {
@@ -266,29 +298,31 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg.ForeColor = System.Drawing.Color.Red;
+                    Label2.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label2.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload2.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg.ForeColor = System.Drawing.Color.Red;
+                        Label2.Text = "Maximum file size 2MB exceeded.";
+                        Label2.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload2.SaveAs(Server.MapPath("~/Uploads/" + FileUpload2.FileName));
-                    lblmsg.Text = "File Upload";
-                    lblmsg.ForeColor = System.Drawing.Color.Green;
+                    Session["ImageBytes"] = FileUpload2.FileBytes;
+                    Image2.ImageUrl = "~/Handler.ashx";
+                    Label2.Text = "File Uploaded";
+                    Label2.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg.Text = "Please Select a valid file to upload.";
-                lblmsg.ForeColor = System.Drawing.Color.Red;
+                Label2.Text = "Please Select a valid file to upload.";
+                Label2.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button1_Click(object sender, EventArgs e)
+        protected void upload_button3_Click(object sender, EventArgs e)
         {
             if (FileUpload3.HasFile)
             {
@@ -296,29 +330,31 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg1.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg1.ForeColor = System.Drawing.Color.Red;
+                    Label3.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label3.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    int fileSize = FileUpload3.PostedFile.ContentLength;
+                    int fileSize = FileUpload4.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg1.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg1.ForeColor = System.Drawing.Color.Red;
+                        Label3.Text = "Maximum file size 2MB exceeded.";
+                        Label3.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload3.SaveAs(Server.MapPath("~/Uploads/" + FileUpload3.FileName));
-                    lblmsg1.Text = "File Upload";
-                    lblmsg1.ForeColor = System.Drawing.Color.Green;
+                    Session["ImageBytes"] = FileUpload3.FileBytes;
+                    Image3.ImageUrl = "~/Handler.ashx";
+                    Label3.Text = "File Upload";
+                    Label3.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg1.Text = "Please Select a valid file to upload.";
-                lblmsg1.ForeColor = System.Drawing.Color.Red;
+                Label3.Text = "Please Select a valid file to upload.";
+                Label3.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void Upload_button2_Click(object sender, EventArgs e)
+        protected void upload_button4_Click(object sender, EventArgs e)
         {
             if (FileUpload4.HasFile)
             {
@@ -326,59 +362,63 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg2.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg2.ForeColor = System.Drawing.Color.Red;
+                    Label4.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label4.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload4.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg2.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg2.ForeColor = System.Drawing.Color.Red;
+                        Label4.Text = "Maximum file size 2MB exceeded.";
+                        Label4.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload4.SaveAs(Server.MapPath("~/Uploads/" + FileUpload4.FileName));
-                    lblmsg2.Text = "File Upload";
-                    lblmsg2.ForeColor = System.Drawing.Color.Green;
+                    Session["ImageBytes"] = FileUpload4.FileBytes;
+                    Image4.ImageUrl = "~/Handler.ashx";
+                    Label4.Text = "File Upload";
+                    Label4.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg2.Text = "Please Select a valid file to upload.";
-                lblmsg2.ForeColor = System.Drawing.Color.Red;
+                Label4.Text = "Please Select a valid file to upload.";
+                Label4.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button3_Click(object sender, EventArgs e)
+        protected void upload_button5_Click(object sender, EventArgs e)
         {
             if (FileUpload5.HasFile)
             {
-                string fileExtension = System.IO.Path.GetExtension(FileUpload4.FileName);
+                string fileExtension = System.IO.Path.GetExtension(FileUpload5.FileName);
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg3.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg3.ForeColor = System.Drawing.Color.Red;
+                    Label5.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label5.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload5.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg3.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg3.ForeColor = System.Drawing.Color.Red;
+                        Label5.Text = "Maximum file size 2MB exceeded.";
+                        Label5.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload5.SaveAs(Server.MapPath("~/Uploads/" + FileUpload5.FileName));
-                    lblmsg3.Text = "File Upload";
-                    lblmsg3.ForeColor = System.Drawing.Color.Green;
+                    Session["ImageBytes"] = FileUpload5.FileBytes;
+                    Image5.ImageUrl = "~/Handler.ashx";
+                    Label5.Text = "File Upload";
+                    Label5.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg3.Text = "Please Select a valid file to upload.";
-                lblmsg3.ForeColor = System.Drawing.Color.Red;
+                Label5.Text = "Please Select a valid file to upload.";
+                Label5.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button4_Click(object sender, EventArgs e)
+        protected void upload_button6_Click(object sender, EventArgs e)
         {
             if (FileUpload6.HasFile)
             {
@@ -386,29 +426,31 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg4.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg4.ForeColor = System.Drawing.Color.Red;
+                    Label6.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label6.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload6.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg4.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg4.ForeColor = System.Drawing.Color.Red;
+                        Label6.Text = "Maximum file size 2MB exceeded.";
+                        Label6.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload6.SaveAs(Server.MapPath("~/Uploads/" + FileUpload6.FileName));
-                    lblmsg4.Text = "File Upload";
-                    lblmsg4.ForeColor = System.Drawing.Color.Green;
+                    Session["ImageBytes"] = FileUpload6.FileBytes;
+                    Image6.ImageUrl = "~/Handler.ashx";
+                    Label6.Text = "File Upload";
+                    Label6.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg4.Text = "Please Select a valid file to upload.";
-                lblmsg4.ForeColor = System.Drawing.Color.Red;
+                Label6.Text = "Please Select a valid file to upload.";
+                Label6.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button5_Click(object sender, EventArgs e)
+        protected void upload_button7_Click(object sender, EventArgs e)
         {
             if (FileUpload7.HasFile)
             {
@@ -416,29 +458,31 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg5.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg5.ForeColor = System.Drawing.Color.Red;
+                    Label7.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label7.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload7.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg5.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg5.ForeColor = System.Drawing.Color.Red;
+                        Label7.Text = "Maximum file size 2MB exceeded.";
+                        Label7.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload7.SaveAs(Server.MapPath("~/Uploads/" + FileUpload7.FileName));
-                    lblmsg5.Text = "File Upload";
-                    lblmsg5.ForeColor = System.Drawing.Color.Green;
+                    Session["ImageBytes"] = FileUpload7.FileBytes;
+                    Image7.ImageUrl = "~/Handler.ashx";
+                    Label7.Text = "File Upload";
+                    Label7.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg5.Text = "Please Select a valid file to upload.";
-                lblmsg5.ForeColor = System.Drawing.Color.Red;
+                Label7.Text = "Please Select a valid file to upload.";
+                Label7.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button6_Click(object sender, EventArgs e)
+        protected void upload_button8_Click(object sender, EventArgs e)
         {
             if (FileUpload8.HasFile)
             {
@@ -446,29 +490,29 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg6.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg6.ForeColor = System.Drawing.Color.Red;
+                    Label8.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label8.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload8.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg6.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg6.ForeColor = System.Drawing.Color.Red;
+                        Label8.Text = "Maximum file size 2MB exceeded.";
+                        Label8.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload8.SaveAs(Server.MapPath("~/Uploads/" + FileUpload8.FileName));
-                    lblmsg6.Text = "File Upload";
-                    lblmsg6.ForeColor = System.Drawing.Color.Green;
+                    FileUpload8.SaveAs(Server.MapPath("~/Uploads/" + FileUpload9.FileName));
+                    Label8.Text = "File Upload";
+                    Label8.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg6.Text = "Please Select a valid file to upload.";
-                lblmsg6.ForeColor = System.Drawing.Color.Red;
+                Label8.Text = "Please Select a valid file to upload.";
+                Label8.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button7_Click(object sender, EventArgs e)
+        protected void upload_button9_Click(object sender, EventArgs e)
         {
             if (FileUpload9.HasFile)
             {
@@ -476,87 +520,57 @@ namespace PhD
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg7.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg7.ForeColor = System.Drawing.Color.Red;
+                    Label9.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label9.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload9.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg7.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg7.ForeColor = System.Drawing.Color.Red;
+                        Label9.Text = "Maximum file size 2MB exceeded.";
+                        Label9.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload9.SaveAs(Server.MapPath("~/Uploads/" + FileUpload9.FileName));
-                    lblmsg7.Text = "File Upload";
-                    lblmsg7.ForeColor = System.Drawing.Color.Green;
+                    Label9.Text = "File Upload";
+                    Label9.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg7.Text = "Please Select a valid file to upload.";
-                lblmsg7.ForeColor = System.Drawing.Color.Red;
+                Label9.Text = "Please Select a valid file to upload.";
+                Label9.ForeColor = System.Drawing.Color.Red;
             }
         }
-        protected void upload_button8_Click(object sender, EventArgs e)
+        protected void upload_button10_Click(object sender, EventArgs e)
         {
             if (FileUpload10.HasFile)
             {
+               
                 string fileExtension = System.IO.Path.GetExtension(FileUpload10.FileName);
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg8.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg8.ForeColor = System.Drawing.Color.Red;
+                    Label10.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label10.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload10.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg8.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg8.ForeColor = System.Drawing.Color.Red;
+                        Label10.Text = "Maximum file size 2MB exceeded.";
+                        Label10.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload9.SaveAs(Server.MapPath("~/Uploads/" + FileUpload10.FileName));
-                    lblmsg8.Text = "File Upload";
-                    lblmsg8.ForeColor = System.Drawing.Color.Green;
+                    FileUpload10.SaveAs(Server.MapPath("~/Uploads/" + FileUpload10.FileName));
+                    Label10.Text = "File Uploaded";
+                    Label10.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg8.Text = "Please Select a valid file to upload.";
-                lblmsg8.ForeColor = System.Drawing.Color.Red;
-            }
-        }
-        protected void upload_button9_Click(object sender, EventArgs e)
-        {
-            if (FileUpload9.HasFile)
-            {
-               
-                string fileExtension = System.IO.Path.GetExtension(FileUpload11.FileName);
-
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
-                {
-                    lblmsg9.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg9.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    int fileSize = FileUpload11.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
-                    {
-                        lblmsg9.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg9.ForeColor = System.Drawing.Color.Red;
-                    }
-                    FileUpload11.SaveAs(Server.MapPath("~/Uploads/" + FileUpload11.FileName));
-                    lblmsg9.Text = "File Uploaded";
-                    lblmsg9.ForeColor = System.Drawing.Color.Green;
-                }
-            }
-            else
-            {
-                lblmsg9.Text = "Please Select a valid file to upload.";
-                lblmsg9.ForeColor = System.Drawing.Color.Red;
+                Label10.Text = "Please Select a valid file to upload.";
+                Label10.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void button_download_Click(object sender, EventArgs e)
@@ -566,34 +580,34 @@ namespace PhD
             Response.TransmitFile(Server.MapPath("~/Files/admission_form.docx"));
             Response.End();
         }
-        protected void upload_button10_Click(object sender, EventArgs e)
+        protected void upload_button11_Click(object sender, EventArgs e)
         {
-            if (FileUpload12.HasFile)
+            if (FileUpload11.HasFile)
             {
-                string fileExtension = System.IO.Path.GetExtension(FileUpload12.FileName);
+                string fileExtension = System.IO.Path.GetExtension(FileUpload11.FileName);
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    lblmsg10.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    lblmsg10.ForeColor = System.Drawing.Color.Red;
+                    Label11.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label11.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    int fileSize = FileUpload12.PostedFile.ContentLength;
+                    int fileSize = FileUpload11.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        lblmsg10.Text = "Maximum file size 2MB exceeded.";
-                        lblmsg10.ForeColor = System.Drawing.Color.Red;
+                        Label11.Text = "Maximum file size 2MB exceeded.";
+                        Label11.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload12.SaveAs(Server.MapPath("~/Uploads/" + FileUpload12.FileName));
-                    lblmsg10.Text = "File Upload";
-                    lblmsg10.ForeColor = System.Drawing.Color.Green;
+                    FileUpload11.SaveAs(Server.MapPath("~/Uploads/" + FileUpload11.FileName));
+                    Label11.Text = "File Upload";
+                    Label11.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                lblmsg10.Text = "Please Select a valid file to upload.";
-                lblmsg10.ForeColor = System.Drawing.Color.Red;
+                Label11.Text = "Please Select a valid file to upload.";
+                Label11.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -602,6 +616,7 @@ namespace PhD
 
 
 
-       
+
+
     }
 }
