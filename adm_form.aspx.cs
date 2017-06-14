@@ -278,7 +278,8 @@ namespace PhD
                         Label1.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                    Session["ImageBytes"] = FileUpload1.FileBytes;
+                    S1 = Session["ImageBytes"];
+                    S1= FileUpload1.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
                     Label1.Text = "File Uploaded";
                     Label1.ForeColor = System.Drawing.Color.Green;
