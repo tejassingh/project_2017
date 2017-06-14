@@ -278,8 +278,7 @@ namespace PhD
                         Label1.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                    S1 = Session["ImageBytes"];
-                    S1= FileUpload1.FileBytes;
+                     Session["ImageBytes"]= FileUpload1.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
                     Label1.Text = "File Uploaded";
                     Label1.ForeColor = System.Drawing.Color.Green;
@@ -312,7 +311,7 @@ namespace PhD
                     }
                     FileUpload2.SaveAs(Server.MapPath("~/Uploads/" + FileUpload2.FileName));
                     Session["ImageBytes"] = FileUpload2.FileBytes;
-                    Image2.ImageUrl = "~/Handler.ashx";
+                    Image1.ImageUrl = "~/Handler.ashx";
                     Label2.Text = "File Uploaded";
                     Label2.ForeColor = System.Drawing.Color.Green;
                 }
@@ -344,8 +343,8 @@ namespace PhD
                     }
                     FileUpload3.SaveAs(Server.MapPath("~/Uploads/" + FileUpload3.FileName));
                     Session["ImageBytes"] = FileUpload3.FileBytes;
-                    Image3.ImageUrl = "~/Handler.ashx";
-                    Label3.Text = "File Upload";
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label3.Text = "File Uploaded";
                     Label3.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -376,8 +375,8 @@ namespace PhD
                     }
                     FileUpload4.SaveAs(Server.MapPath("~/Uploads/" + FileUpload4.FileName));
                     Session["ImageBytes"] = FileUpload4.FileBytes;
-                    Image4.ImageUrl = "~/Handler.ashx";
-                    Label4.Text = "File Upload";
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label4.Text = "File Uploaded";
                     Label4.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -408,8 +407,8 @@ namespace PhD
                     }
                     FileUpload5.SaveAs(Server.MapPath("~/Uploads/" + FileUpload5.FileName));
                     Session["ImageBytes"] = FileUpload5.FileBytes;
-                    Image5.ImageUrl = "~/Handler.ashx";
-                    Label5.Text = "File Upload";
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label5.Text = "File Uploaded";
                     Label5.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -440,8 +439,8 @@ namespace PhD
                     }
                     FileUpload6.SaveAs(Server.MapPath("~/Uploads/" + FileUpload6.FileName));
                     Session["ImageBytes"] = FileUpload6.FileBytes;
-                    Image6.ImageUrl = "~/Handler.ashx";
-                    Label6.Text = "File Upload";
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label6.Text = "File Uploaded";
                     Label6.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -472,8 +471,8 @@ namespace PhD
                     }
                     FileUpload7.SaveAs(Server.MapPath("~/Uploads/" + FileUpload7.FileName));
                     Session["ImageBytes"] = FileUpload7.FileBytes;
-                    Image7.ImageUrl = "~/Handler.ashx";
-                    Label7.Text = "File Upload";
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label7.Text = "File Uploaded";
                     Label7.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -503,7 +502,9 @@ namespace PhD
                         Label8.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload8.SaveAs(Server.MapPath("~/Uploads/" + FileUpload9.FileName));
-                    Label8.Text = "File Upload";
+                    Session["ImageBytes"] = FileUpload8.FileBytes;
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label8.Text = "File Uploaded";
                     Label8.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -533,7 +534,9 @@ namespace PhD
                         Label9.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload9.SaveAs(Server.MapPath("~/Uploads/" + FileUpload9.FileName));
-                    Label9.Text = "File Upload";
+                    Session["ImageBytes"] = FileUpload9.FileBytes;
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label9.Text = "File Uploaded";
                     Label9.ForeColor = System.Drawing.Color.Green;
                 }
             }
@@ -564,6 +567,8 @@ namespace PhD
                         Label10.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload10.SaveAs(Server.MapPath("~/Uploads/" + FileUpload10.FileName));
+                    Session["ImageBytes"] = FileUpload10.FileBytes;
+                    Image1.ImageUrl = "~/Handler.ashx";
                     Label10.Text = "File Uploaded";
                     Label10.ForeColor = System.Drawing.Color.Green;
                 }
@@ -601,7 +606,9 @@ namespace PhD
                         Label11.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload11.SaveAs(Server.MapPath("~/Uploads/" + FileUpload11.FileName));
-                    Label11.Text = "File Upload";
+                    Session["ImageBytes"] = FileUpload11.FileBytes;
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label11.Text = "File Uploaded";
                     Label11.ForeColor = System.Drawing.Color.Green;
                 }
             }
