@@ -205,20 +205,10 @@
         .auto-style83 {
             width: 50px;
         }
-        .auto-style91 {
-            height: 21px;
-            width: 485px;
-            text-align: justify;
-        }
         .auto-style94 {
             height: 21px;
             text-align: justify;
             width: 160px;
-        }
-        .auto-style101 {
-            height: 39px;
-            width: 485px;
-            text-align: justify;
         }
         .auto-style103 {
             height: 39px;
@@ -227,12 +217,12 @@
         }
         .auto-style105 {
             height: 39px;
-            width: 485px;
+            width: 150px;
             text-align: right;
         }
         .auto-style106 {
             height: 39px;
-            width: 160px;
+            width: 220px;
             text-align: left;
         }
         .auto-style109 {
@@ -295,6 +285,26 @@
         }
         .auto-style137 {
             margin-left: 80px;
+        }
+        .auto-style138 {
+            height: 21px;
+            text-align: justify;
+            width: 220px;
+        }
+        .auto-style139 {
+            height: 39px;
+            width: 220px;
+            text-align: justify;
+        }
+        .auto-style140 {
+            height: 21px;
+            text-align: justify;
+            width: 150px;
+        }
+        .auto-style141 {
+            height: 39px;
+            width: 150px;
+            text-align: justify;
         }
     </style>
 </head>
@@ -458,14 +468,23 @@
             <strong>Educational Details:</strong></p>
         <table class="auto-style24" border="0">
             <tr>
-                <td class="auto-style91" style="border-style: solid; border-width: thin"><strong>Examination passed:</strong></td>
+                <td class="auto-style140" style="border-style: solid; border-width: thin"><strong>Examination passed:</strong></td>
                 <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>University</strong></td>
                 <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>Year</strong></td>
                 <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>Div./Grade</strong></td>
-                <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>Subject(s)</strong></td>
+                <td class="auto-style138" style="border-style: solid; border-width: thin"><strong>Subject(s)</strong></td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>B.A/B.Sc./B.Com.(Hons/Pass)/B.B.A./B.Tech.</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin">
+                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="ui-priority-primary" Height="16px" Width="134px">
+                        <asp:ListItem>B.A.</asp:ListItem>
+                        <asp:ListItem>B.Sc.</asp:ListItem>
+                        <asp:ListItem>B.Com(hons.)</asp:ListItem>
+                        <asp:ListItem>B.Com.(Pass)</asp:ListItem>
+                        <asp:ListItem>B.Tech.</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Select Graduation Course" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+                </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_Uni" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ValidationGroup="page1" ForeColor="Red" ControlToValidate="TextBox_Grad_Uni"></asp:RequiredFieldValidator>
@@ -482,10 +501,20 @@
                 </td>
                 <td class="auto-style106">
                     <asp:TextBox ID="TextBox8" runat="server" Height="39px" OnTextChanged="TextBox8_TextChanged" Width="160px"></asp:TextBox>
-                    <span class="auto-style22">*</span></td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="TextBox8" ErrorMessage="*" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>M.A./M.Sc./M.C.A./M.Com./M.B.A./M.Tech.</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin">
+                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="ui-priority-primary" Height="16px" Width="134px">
+                        <asp:ListItem>M.A.</asp:ListItem>
+                        <asp:ListItem>M.C.A</asp:ListItem>
+                        <asp:ListItem>M.Sc.</asp:ListItem>
+                        <asp:ListItem>M.Com.</asp:ListItem>
+                        <asp:ListItem>M.Tech</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="DropDownList2" ErrorMessage="Select Masters Course" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+                </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox9" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="TextBox9" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
@@ -500,13 +529,14 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="TextBox11" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                     <asp:RangeValidator ID="RangeValidator6" runat="server" ControlToValidate="TextBox11" ErrorMessage="Division must be in 1-3" ForeColor="Red" MaximumValue="3" MinimumValue="1" ValidationGroup="page1"></asp:RangeValidator>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox12" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="TextBox12" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>&nbsp; M.Phil in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part -I</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin"><strong>M.Phil<br />
+                    in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part -I</strong></td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox13" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
@@ -516,7 +546,7 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox15" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox16" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
             </tr>
@@ -531,12 +561,12 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox19" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox20" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>Any other Examination passed:</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin"><strong>Any other Examination passed:</strong></td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox21" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
@@ -546,7 +576,7 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox23" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox24" runat="server" Height="39px" Width="160px"></asp:TextBox>
             </strong>
                 </td>
@@ -569,7 +599,7 @@
             <strong>Fellowship/Scholarship under</strong></td>
                 <td class="auto-style110">
             <strong>
-			<asp:TextBox ID="TextBox27" runat="server" Width="270px"></asp:TextBox>
+			<asp:TextBox ID="TextBox27" runat="server" Width="273px" Height="28px"></asp:TextBox>
 			scheme</strong></td>
             </tr>
             <tr>
