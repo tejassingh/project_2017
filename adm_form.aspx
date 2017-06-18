@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href = "https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel = "stylesheet" />
+    <link href="jquery-ui.theme.css" rel = "stylesheet" />
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
+    <script src="jquery-ui.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet" />
  
     <script type="text/javascript">
 
@@ -132,7 +132,7 @@
             text-align: justify;
         }
         .auto-style10 {
-            width: 500px;
+            width: 551px;
             height: 69px;
             text-align: justify;
         }
@@ -169,7 +169,7 @@
             height: 70px;
         }
         .auto-style64 {
-            width: 500px;
+            width: 551px;
             text-align: justify;
             height: 70px;
         }
@@ -293,9 +293,6 @@
             text-align: justify;
             margin-left: 200px;
         }
-        .auto-style136 {
-            color: #FF3300;
-        }
         .auto-style137 {
             margin-left: 80px;
         }
@@ -334,21 +331,26 @@
 
 
             &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
-&nbsp;</div>
+&nbsp;<br />
+                </div>
         <p class="auto-style77">
             <strong>Basic Details:</strong></p>
         <table class="auto-style4">
             <tr>
                 <td class="auto-style9"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px" Height="35px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style12">Pincode:&nbsp; <span class="auto-style22">*</span></td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True" MaxLength="6"></asp:TextBox>
-                    <br />
+            <strong>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+            </strong>
+                    <br />
+            <strong>
+                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True" MaxLength="6" Height="16px" Width="121px"></asp:TextBox>
+            </strong>
                     <br />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextBox_Pincode_Delhi" ErrorMessage="Pin code cannot be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
@@ -831,7 +833,7 @@
 
             </div>
     </div>
-        <asp:Button ID="Button3" runat="server" Text="Submit" OnClick="Button3_Click" />
+       
     </form>
     <p class="auto-style80">
         &nbsp;</p>
