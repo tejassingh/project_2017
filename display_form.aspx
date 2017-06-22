@@ -8,61 +8,8 @@
 
 
 
-
-    <style type="text/css">
-
-        .auto-style77 {
-            font-size: x-large;
-            text-align: justify;
-        }
-        .auto-style4 {
-            border-style: none;
-            width: 945px;
-            height: 278px;
-        }
-        .auto-style9 {
-            width: 250px;
-            height: 69px;
-            text-align: justify;
-        }
-        .auto-style22 {
-            color: #FF0000;
-        }
-        .auto-style10 {
-            width: 500px;
-            height: 69px;
-            text-align: justify;
-        }
-        .auto-style12 {
-            height: 69px;
-            width: 133px;
-            text-align: justify;
-        }
-        .auto-style63 {
-            width: 250px;
-            text-align: justify;
-            height: 70px;
-        }
-        .auto-style64 {
-            width: 500px;
-            text-align: justify;
-            height: 70px;
-        }
-        .auto-style65 {
-            width: 133px;
-            text-align: justify;
-            height: 70px;
-        }
-        .auto-style81 {
-            width: 1125px;
-        }
-        .auto-style82 {
-            width: 530px;
-        }
-        .auto-style83 {
-            width: 50px;
-        }
-        </style>
+    
+     
 </head>
 <body>
     <form id="form1" runat="server">
@@ -174,7 +121,15 @@
             </strong>
     
     </div>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+
+        <p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button1" runat="server" Text="Print" />
+        </p>
+
     </form>
 </body>
 </html>
