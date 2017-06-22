@@ -15,9 +15,14 @@
 
 
         function Departmentindexchange() {
-            //var txtbox = document.getElementById("Textbox37");
             var ddmenu = document.getElementById('DropDownListDepartment');
             var txt = ddmenu.options[ddmenu.selectedIndex].text;
+            var txtbox = document.getElementById("TextBox37").value = txt;
+
+
+           // document.getElementById("Label1").innerHTML=txt;
+            
+          // document.getElementById("demo").style.backgroundColor='gray';
             document.getElementById("demo").innerHTML=txt;
             document.getElementById("demo").style.backgroundColor='gray';
             //txtbox.text = txt;
@@ -293,16 +298,36 @@
             text-align: justify;
             margin-left: 200px;
         }
-        .auto-style136 {
-            color: #FF3300;
-        }
         .auto-style137 {
             margin-left: 80px;
         }
-    </style>
+        .auto-style138 {
+            margin-left: 41px;
+        }
+        .auto-style139 {
+            width: 100%;
+            border-style: solid;
+            border-width: 3px;
+        }
+        .auto-style140 {
+            width: 175px;
+        }
+        .auto-style141 {
+            width: 202px;
+        }
+        .auto-style143 {
+            width: 160px;
+        }
+        .auto-style144 {
+            width: 2px;
+        }
+        .auto-style145 {
+            width: 364px;
+        }
+        </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" enctype="multipart/form-data">
         <asp:HiddenField ID="Hdnfldtabs" runat="server" Value="0" />
         <asp:HiddenField ID="department_hidden" runat="server" />
 
@@ -320,7 +345,7 @@
               
         <div class="auto-style80">
             <strong><span class="auto-style2">Department :</span>
-            <asp:DropDownList ID="DropDownListDepartment" runat="server"  onchange="Departmentindexchange()">
+            <asp:DropDownList ID="DropDownListDepartment" runat="server" >
                 <asp:ListItem>Select Department</asp:ListItem>
                 <asp:ListItem>Computer Science</asp:ListItem>
                 <asp:ListItem>Mathematics</asp:ListItem>
@@ -602,11 +627,11 @@
             <br />
             UNDERTAKING DECLARATION:<br />
 		<br />
-		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of 
-            University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
+		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <asp:TextBox ID="TextBox37" runat="server" ReadOnly="True"></asp:TextBox> University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
 		b)I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
             <br />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page2"></asp:RequiredFieldValidator>
+      
             </strong>
         </div>
         <p class="auto-style75">
@@ -673,7 +698,13 @@
             </tr>
         </table>
     <p class="auto-style80">
-        &nbsp;</p>
+        &nbsp;&nbsp;&nbsp; </p>
+        <p class="auto-style80">
+        &nbsp;<strong>Download the document and get attested by the Head of the Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Button ID="button_download" runat="server" Width="167px" CausesValidation="False" OnClick="button_download_Click" Text="Download" CssClass="auto-style138" />
+            </strong><br />
+           <br />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
         <asp:Button ID="Button3" runat="server" Text="Button2" OnClick="Button3_Click" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous1" runat="server" OnClick="Button4_Click" Text="Previous" ValidationGroup="page1" />
             </strong>
@@ -683,91 +714,201 @@
             </strong>
     </div>
     <div id="Upload_Doc" class="auto-style137">
-           <asp:FileUpload ID="FileUpload2" runat="server" />
-           &nbsp;
-           <asp:Button ID="Button1" runat="server" Text="Upload File" OnClick="upload_button_Click" CausesValidation="False" />
+           <strong>&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <table class="auto-style139">
+               <tr>
+                   <td class="auto-style140"><strong>CLASS XII CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload1" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                   </td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload1" runat="server" OnClick="upload_button1_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;&nbsp;&nbsp;&nbsp;
+                       <asp:Label ID="Label1" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="FileUpload1" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>CLASS X CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload2" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload2" runat="server" OnClick="upload_button2_Click" CausesValidation="False" style="width: 99px" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;&nbsp;
+                       <asp:Label ID="Label2" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="FileUpload2" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>CLASS XII MARKSHEET</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload3" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload3" runat="server" OnClick="upload_button3_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;&nbsp;
+                       <asp:Label ID="Label3" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="FileUpload3" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>CLASS X MARKSHEET</strong><br />
+                   </td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload4" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload4" runat="server" OnClick="upload_button4_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;&nbsp;
+                       <asp:Label ID="Label4" runat="server"></asp:Label>
+                       &nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>GRADUATION MARKSHEET</strong><br />
+                   </td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload5" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload5" runat="server" OnClick="upload_button5_Click"  CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;&nbsp;
+                       <asp:Label ID="Label5" runat="server"></asp:Label>
+                       &nbsp;&nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="FileUpload5" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>POST-GRADUATION<br />
+                       MARKSHEET</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload6" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload6" runat="server" OnClick="upload_button6_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;&nbsp;
+                       <asp:Label ID="Label6" runat="server"></asp:Label>
+                       &nbsp;&nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="FileUpload6" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>GRADUATION CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload7" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload7" runat="server" OnClick="upload_button7_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;
+                       <asp:Label ID="Label7" runat="server"></asp:Label>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="FileUpload7" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>POST GRADUATION CERTIFICATE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload8" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload8" runat="server" OnClick="upload_button8_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;
+                       <asp:Label ID="Label8" runat="server"></asp:Label>
+                       &nbsp;&nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="FileUpload8" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>DOCUMENT ATTESTED BY HOD</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload9" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload9" runat="server" OnClick="upload_button9_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;
+                       <asp:Label ID="Label9" runat="server"></asp:Label>
+                       &nbsp;&nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="FileUpload9" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140"><strong>SIGNATURE</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload10" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;&nbsp;
+                       <asp:Button ID="Button_upload10" runat="server" OnClick="upload_button10_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;
+                       <asp:Label ID="Label10" runat="server"></asp:Label>
+                       &nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="FileUpload10" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140">P<strong>HOTO</strong></td>
+                   <td class="auto-style141">
+                       <asp:FileUpload ID="FileUpload11" runat="server" />
+                   </td>
+                   <td class="auto-style144">
+                       &nbsp;</td>
+                   <td class="auto-style143">&nbsp;
+                       <asp:Button ID="Button_upload11" runat="server" OnClick="upload_button11_Click" CausesValidation="False" Text="Upload File" />
+                       &nbsp;</td>
+                   <td class="auto-style145">&nbsp;
+                       <asp:Label ID="Label11" runat="server"></asp:Label>
+                       &nbsp;&nbsp;
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="FileUpload11" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="auto-style140">&nbsp;</td>
+                   <td class="auto-style141">&nbsp;</td>
+                   <td class="auto-style144">&nbsp;</td>
+                   <td class="auto-style143">&nbsp;</td>
+                   <td class="auto-style145">&nbsp;</td>
+               </tr>
+           </table>
         
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg" runat="server" Font-Bold="true"></asp:Label>
-        
            <br />
         
-           <br />
-           <asp:FileUpload ID="FileUpload3" runat="server" />
-           <asp:Button ID="upload_button1" runat="server" CausesValidation="False" OnClick="upload_button1_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X Marksheet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg1" runat="server" Font-Bold="True"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload4" runat="server" />
-           <asp:Button ID="Upload_button2" runat="server" CausesValidation="False" OnClick="Upload_button2_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class XII Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg2" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload5" runat="server" />
-           <asp:Button ID="upload_button3" runat="server" CausesValidation="False" OnClick="upload_button3_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Class X&nbsp; Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg3" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload6" runat="server" style="width: 217px" />
-           <asp:Button ID="upload_button4" runat="server" CausesValidation="False" OnClick="upload_button4_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graduation Marksheet&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg4" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload7" runat="server" />
-           <asp:Button ID="upload_button5" runat="server" CausesValidation="False" OnClick="upload_button5_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Marksheet&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg5" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload8" runat="server" Width="234px" />
-           &nbsp;<asp:Button ID="upload_button6" runat="server" CausesValidation="False" OnClick="upload_button6_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp; Graduation Certificate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg6" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload9" runat="server" />
-           <asp:Button ID="upload_button7" runat="server" CausesValidation="False" OnClick="upload_button7_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Post-Graduation Certificate&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg7" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload10" runat="server" />
-           <asp:Button ID="upload_button8" runat="server" CausesValidation="False" OnClick="upload_button8_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg8" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload11" runat="server" />
-           <asp:Button ID="upload_button9" runat="server" CausesValidation="False" OnClick="upload_button9_Click" Text="Upload File" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Photo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:Label ID="lblmsg9" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
-           <br />
-           <br />
-           <asp:Button ID="button_download" runat="server" Width="167px" CausesValidation="False" OnClick="button_download_Click" Text="Download" />
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Download the document and get attested by the Head of the Department<br />
-           <br />
-           <br />
-           <asp:FileUpload ID="FileUpload12" runat="server" />
-&nbsp;&nbsp;
-           <asp:Button ID="upload_button10" runat="server" CausesValidation="False" Text="Upload file" Width="141px" />
-           &nbsp;&nbsp; File attested by the Head of the Department&nbsp;&nbsp;
-           <asp:Label ID="lblmsg10" runat="server" Font-Bold="true"></asp:Label>
-        
-           <br />
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Image ID="Image1" runat="server" CssClass="auto-style60" Height="183px" Width="195px" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
            <br />
         
@@ -776,13 +917,9 @@
            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
            <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Likho kuch" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
+           <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
            <br />
            <br />
-           <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
-       
-           <asp:FileUpload ID="FileUpload1" runat="server" />
-           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" ValidationGroup="page3" />
         
            <br />
         
