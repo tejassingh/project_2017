@@ -719,7 +719,7 @@
                <tr>
                    <td class="auto-style140"><strong>CLASS XII CERTIFICATE</strong></td>
                    <td class="auto-style141">
-                       <asp:FileUpload ID="FileUpload1" runat="server" />
+                       <asp:FileUpload ID="FileUploadxii_certi" runat="server" />
                    </td>
                    <td class="auto-style144">
                    </td>

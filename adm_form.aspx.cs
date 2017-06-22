@@ -260,9 +260,9 @@ namespace PhD
 
         protected void upload_button1_Click(object sender, EventArgs e)
         {
-            if (FileUpload1.HasFile)
+            if (FileUploadxii_certi.HasFile)
             {
-                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+                string fileExtension = System.IO.Path.GetExtension(FileUploadxii_certi.FileName);
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
@@ -271,14 +271,14 @@ namespace PhD
                 }
                 else
                 {
-                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    int fileSize = FileUploadxii_certi.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
                         Lb1.Text = "Maximum file size 2MB exceeded.";
                         Lb1.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                     Session["ImageBytes"]= FileUpload1.FileBytes;
+                    FileUploadxii_certi.SaveAs(Server.MapPath("~/Uploads/" + FileUploadxii_certi.FileName));
+                     Session["ImageBytes"]= FileUploadxii_certi.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
                     Lb1.Text = "File Uploaded";
                     Lb1.ForeColor = System.Drawing.Color.Green;
