@@ -481,7 +481,7 @@
             </tr>
             <tr>
                 <td class="auto-style141" style="border-style: solid; border-width: thin">
-                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="ui-priority-primary" Height="16px" Width="134px">
+                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="ui-priority-primary" Height="35px" Width="134px">
                         <asp:ListItem>B.A.</asp:ListItem>
                         <asp:ListItem>B.Sc.</asp:ListItem>
                         <asp:ListItem>B.Com(hons.)</asp:ListItem>
@@ -511,7 +511,7 @@
             </tr>
             <tr>
                 <td class="auto-style141" style="border-style: solid; border-width: thin">
-                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="ui-priority-primary" Height="16px" Width="134px">
+                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="ui-priority-primary" Height="35px" Width="134px">
                         <asp:ListItem>M.A.</asp:ListItem>
                         <asp:ListItem>M.C.A</asp:ListItem>
                         <asp:ListItem>M.Sc.</asp:ListItem>
@@ -920,7 +920,7 @@
            <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
        
            <asp:FileUpload ID="FileUpload1" runat="server" />
-           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button_Click" ValidationGroup="page3" />
+           <asp:Button ID="upload_button" runat="server" Text="Upload File" OnClick="upload_button1_Click" ValidationGroup="page3" />
         
            <br />
         

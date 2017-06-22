@@ -636,5 +636,17 @@ namespace PhD
             Session["mytext"] = TextBox_MobileNo.Text;
             Response.Redirect("~/display_form.aspx");
         }
+
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+            Session["mytext"] = TextBox_MobileNo.Text;
+            Response.Redirect("~/dispay_form.aspx");
+        }
+
+        protected void Button4_Click1(object sender, EventArgs e)
+        {
+            Session["mytext"] = TextBox_MobileNo.Text;
+            Response.Redirect("~/display_form.aspx");
+        }
     }
 }
