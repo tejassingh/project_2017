@@ -260,34 +260,34 @@ namespace PhD
 
         protected void upload_button1_Click(object sender, EventArgs e)
         {
-            if (FileUpload1.HasFile)
+            if (FileUploadxii_certi.HasFile)
             {
-                string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
+                string fileExtension = System.IO.Path.GetExtension(FileUploadxii_certi.FileName);
 
                 if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
                 {
-                    Label1.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Label1.ForeColor = System.Drawing.Color.Red;
+                    Lb1.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Lb1.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
-                    int fileSize = FileUpload1.PostedFile.ContentLength;
+                    int fileSize = FileUploadxii_certi.PostedFile.ContentLength;
                     if (fileSize > 2097152)
                     {
-                        Label1.Text = "Maximum file size 2MB exceeded.";
-                        Label1.ForeColor = System.Drawing.Color.Red;
+                        Lb1.Text = "Maximum file size 2MB exceeded.";
+                        Lb1.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/" + FileUpload1.FileName));
-                     Session["ImageBytes"]= FileUpload1.FileBytes;
+                    FileUploadxii_certi.SaveAs(Server.MapPath("~/Uploads/" + FileUploadxii_certi.FileName));
+                     Session["ImageBytes"]= FileUploadxii_certi.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Label1.Text = "File Uploaded";
-                    Label1.ForeColor = System.Drawing.Color.Green;
+                    Lb1.Text = "File Uploaded";
+                    Lb1.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Label1.Text = "Please Select a valid file to upload.";
-                Label1.ForeColor = System.Drawing.Color.Red;
+                Lb1.Text = "Please Select a valid file to upload.";
+                Lb1.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button2_Click(object sender, EventArgs e)
