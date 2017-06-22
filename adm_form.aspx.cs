@@ -272,9 +272,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUploadxii_certi.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Lb1.Text = "Maximum file size 2MB exceeded.";
+                        Lb1.Text = "Maximum file size 256KB exceeded.";
                         Lb1.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUploadxii_certi.SaveAs(Server.MapPath("~/Uploads/" + FileUploadxii_certi.FileName));
@@ -304,9 +304,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload2.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label2.Text = "Maximum file size 2MB exceeded.";
+                        Label2.Text = "Maximum file size 256KB exceeded.";
                         Label2.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload2.SaveAs(Server.MapPath("~/Uploads/" + FileUpload2.FileName));
@@ -336,9 +336,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload4.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label3.Text = "Maximum file size 2MB exceeded.";
+                        Label3.Text = "Maximum file size 256KB exceeded.";
                         Label3.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload3.SaveAs(Server.MapPath("~/Uploads/" + FileUpload3.FileName));
@@ -368,9 +368,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload4.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label4.Text = "Maximum file size 2MB exceeded.";
+                        Label4.Text = "Maximum file size 256KB exceeded.";
                         Label4.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload4.SaveAs(Server.MapPath("~/Uploads/" + FileUpload4.FileName));
@@ -400,9 +400,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload5.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label5.Text = "Maximum file size 2MB exceeded.";
+                        Label5.Text = "Maximum file size 256KB exceeded.";
                         Label5.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload5.SaveAs(Server.MapPath("~/Uploads/" + FileUpload5.FileName));
@@ -432,9 +432,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload6.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label6.Text = "Maximum file size 2MB exceeded.";
+                        Label6.Text = "Maximum file size 256KB exceeded.";
                         Label6.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload6.SaveAs(Server.MapPath("~/Uploads/" + FileUpload6.FileName));
@@ -464,9 +464,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload7.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label7.Text = "Maximum file size 2MB exceeded.";
+                        Label7.Text = "Maximum file size 256KB exceeded.";
                         Label7.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload7.SaveAs(Server.MapPath("~/Uploads/" + FileUpload7.FileName));
@@ -496,9 +496,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload8.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label8.Text = "Maximum file size 2MB exceeded.";
+                        Label8.Text = "Maximum file size 256KB exceeded.";
                         Label8.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload8.SaveAs(Server.MapPath("~/Uploads/" + FileUpload9.FileName));
@@ -528,9 +528,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload9.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label9.Text = "Maximum file size 2MB exceeded.";
+                        Label9.Text = "Maximum file size 256KB exceeded.";
                         Label9.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload9.SaveAs(Server.MapPath("~/Uploads/" + FileUpload9.FileName));
@@ -561,9 +561,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload10.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label10.Text = "Maximum file size 2MB exceeded.";
+                        Label10.Text = "Maximum file size 256KB exceeded.";
                         Label10.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload10.SaveAs(Server.MapPath("~/Uploads/" + FileUpload10.FileName));
@@ -600,9 +600,9 @@ namespace PhD
                 else
                 {
                     int fileSize = FileUpload11.PostedFile.ContentLength;
-                    if (fileSize > 2097152)
+                    if (fileSize > 262144)
                     {
-                        Label11.Text = "Maximum file size 2MB exceeded.";
+                        Label11.Text = "Maximum file size 256KB exceeded.";
                         Label11.ForeColor = System.Drawing.Color.Red;
                     }
                     FileUpload11.SaveAs(Server.MapPath("~/Uploads/" + FileUpload11.FileName));
