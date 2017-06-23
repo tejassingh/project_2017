@@ -341,7 +341,8 @@
 
 
             &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
-&nbsp;</div>
+&nbsp;<br />
+                </div>
         <p class="auto-style77">
             <strong>Basic Details:</strong></p>
         <table class="auto-style4">
@@ -476,7 +477,7 @@
             </tr>
             <tr>
                 <td class="auto-style141" style="border-style: solid; border-width: thin">
-                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="ui-priority-primary" Height="16px" Width="134px">
+                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="ui-priority-primary" Height="54px" Width="135px">
                         <asp:ListItem>B.A.</asp:ListItem>
                         <asp:ListItem>B.Sc.</asp:ListItem>
                         <asp:ListItem>B.Com(hons.)</asp:ListItem>

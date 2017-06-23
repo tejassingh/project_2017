@@ -189,30 +189,166 @@ namespace PhD
 
         protected void Next1_Click(object sender, EventArgs e)
         {
+            string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             try
             {
-                SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["Basic_DetailsConnectionString"].ConnectionString);
-                conn1.Open();
-                string insertQuery = "insert into [Table] (Delhi_Address, Delhi_Pincode, Delhi_Telephone, Delhi_Mobile, Per_Address, Per_Pincode, Per_Telephone, Per_Mobile, Father_Occupation, Mother_Occupation, Other_Course, DU_Enroll) values (@dadd, @dpin, @dtel, @dmob, @padd, @ppin, @ptel, @pmob, @focc, @mocc, @ocourse, @duenroll)";
-                SqlCommand com1 = new SqlCommand(insertQuery, conn1);
-                com1.Parameters.AddWithValue("@dadd", TextBox_Address_Delhi.Text);
-                com1.Parameters.AddWithValue("@dpin", TextBox_Pincode_Delhi.Text);
-                com1.Parameters.AddWithValue("@dtel", TextBox_Telephone_Delhi.Text);
-                com1.Parameters.AddWithValue("@dmob", TextBox_MobileNo.Text);
-                com1.Parameters.AddWithValue("@padd", TextBox_Per_Add.Text);
-                com1.Parameters.AddWithValue("@ppin", TextBox_Per_Pincode.Text);
-                com1.Parameters.AddWithValue("@ptel", TextBox_Per_Telephone.Text);
-                com1.Parameters.AddWithValue("@pmob", TextBox_Per_MobileNo.Text);
-                com1.Parameters.AddWithValue("@focc", TextBox25.Text);
-                com1.Parameters.AddWithValue("@mocc", TextBox30.Text);
-                com1.Parameters.AddWithValue("@ocourse", TextBox3.Text);
-                com1.Parameters.AddWithValue("@duenroll", TextBox26.Text);
-
-                com1.ExecuteNonQuery();
-               /* Response.Redirect("Basic_Details_Form.aspx");
-                Response.Write("SUCCESS!!!"); 
-                */
-                conn1.Close();
+                SqlConnection con = new SqlConnection(CS);
+                con.Open();
+                string insertQuery = "insert into [Basic_Details] values(@usrid,@deladd,@delpincode,@deltelno,@delmobno,@peradd,@perpincode,@pertelno,@permobno,@fathersocc,@mothersocc,@othercourse,@enrollno)";
+                SqlCommand cmd = new SqlCommand(insertQuery, con);
+                cmd.Parameters.AddWithValue("@deladd", TextBox_Address_Delhi.Text);
+                cmd.Parameters.AddWithValue("@delpincode", TextBox_Pincode_Delhi.Text);
+                cmd.Parameters.AddWithValue("@deltelno", TextBox_Telephone_Delhi.Text);
+                cmd.Parameters.AddWithValue("@delmobno", TextBox_MobileNo.Text);
+                cmd.Parameters.AddWithValue("@peradd", TextBox_Per_Add.Text);
+                cmd.Parameters.AddWithValue("@perpincode", TextBox_Per_Pincode.Text);
+                cmd.Parameters.AddWithValue("@pertelno", TextBox_Per_Telephone.Text);
+                cmd.Parameters.AddWithValue("@permobno", TextBox_Per_MobileNo.Text);
+                if (!string.IsNullOrWhiteSpace(TextBox25.Text))
+                {
+                    cmd.Parameters.AddWithValue("@fathersocc", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@fathersocc", TextBox25.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox30.Text))
+                {
+                    cmd.Parameters.AddWithValue("@mothersocc", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@mothersocc", TextBox30.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox3.Text))
+                {
+                    cmd.Parameters.AddWithValue("@othercourse", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@othercourse", TextBox3.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox30.Text))
+                {
+                    cmd.Parameters.AddWithValue("@enrollno", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@enrollno", TextBox26.Text);
+                }
+                cmd.ExecuteNonQuery();
+                string insertQuery1 = "insert into [Educational_Details] values(@eduid,@usrid,@gradcourse,@graduni,@gradyear,@graddiv,@gradsub,@pgradcourse,@graduni,@pgradyear,@pgraddiv,@pgradsub,@mphiluni1,@mphilyr1,mphildiv1,@mphilsub1,@mphiluni2,@mpilyr2,@mphildiv2,@mphilsub2,@anyotherexuni,@anyotherexyr,@anyotherexdiv,@anyotherexsub)";
+                SqlCommand cmd1 = new SqlCommand(insertQuery1, con);
+                //cmd1.Parameters.AddWithValue("@eduid",);
+                //cmd1.Parameters.AddWithValue("@usrid",)
+                cmd1.Parameters.AddWithValue("@gradcourse", DropDownList1.SelectedItem.Text);
+                cmd1.Parameters.AddWithValue("@graduni", TextBox_Grad_Uni.Text);
+                cmd1.Parameters.AddWithValue("@gradyear", TextBox_Grad_year.Text);
+                cmd1.Parameters.AddWithValue("@graddiv", TextBox_Grad_Div.Text);
+                cmd1.Parameters.AddWithValue("@gradsub", TextBox8.Text);
+                cmd1.Parameters.AddWithValue("@pgradcourse", DropDownList2.SelectedItem.Text);
+                cmd1.Parameters.AddWithValue("@pgraduni", TextBox9.Text);
+                cmd1.Parameters.AddWithValue("@pgradyear", TextBox10.Text);
+                cmd1.Parameters.AddWithValue("@pgraddiv", TextBox11.Text);
+                cmd1.Parameters.AddWithValue("@pgradsub", TextBox12.Text);
+                if (!string.IsNullOrWhiteSpace(TextBox13.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphiluni1", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphiluni1", TextBox13.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox14.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphilyr1", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphilyr1", TextBox14.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox15.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphildiv1", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphildiv1", TextBox15.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox16.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphilsub1", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphilsub1", TextBox16.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox17.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphiluni2", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphiluni2", TextBox17.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox18.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphilyr2", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphilyr2", TextBox18.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox19.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphildiv2", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphildiv2", TextBox19.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox20.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@mphilsub2", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@mphilsub2", TextBox20.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox21.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexuni", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexuni", TextBox21.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox22.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexyr", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexyr", TextBox22.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox23.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexdiv", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexdiv", TextBox23.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox24.Text))
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexsub", null);
+                }
+                else
+                {
+                    cmd1.Parameters.AddWithValue("@anyotherexsub", TextBox24.Text);
+                }
+                cmd1.ExecuteNonQuery();
+                con.Close();
             }
             catch (Exception ex1)
             {
@@ -225,6 +361,112 @@ namespace PhD
         protected void Next2_Click(object sender, EventArgs e)
         {
             SetSelectedTab(TabIndex.TWO);
+            string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            try
+            {
+                SqlConnection con = new SqlConnection(CS);
+                con.Open();
+                string insertQuery="insert into [Research_Details] values(@researchid,@usrid,@fellowship,@lang,@researchexp,@titleresearch,@currapplied,@nameinsti,@designation,@period_of_emp_from,@period_of_emp_to,@type_of_emp,@briefdetails,@officetelno)";
+                SqlCommand cmd = new SqlCommand(insertQuery, con);
+                //cmd.Parameters.AddWithValue("@researchid",);
+                //cmd.Parameters.AddWithValue("@usrid",);
+                cmd.Parameters.AddWithValue("@fellowship", TextBox27.Text);
+                cmd.Parameters.AddWithValue("@lang", TextBox_Languages0.Text);
+                if (!string.IsNullOrWhiteSpace(TextBox28.Text))
+                {
+                    cmd.Parameters.AddWithValue("@researchexp", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@researchexp", TextBox28.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox29.Text))
+                {
+                    cmd.Parameters.AddWithValue("@researchexp", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@titleresearch", TextBox29.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(RadioButtonList2.SelectedItem.Text))
+                {
+                    cmd.Parameters.AddWithValue("@currapplied", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@currapplied", RadioButtonList2.SelectedItem.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox31.Text))
+                {
+                    cmd.Parameters.AddWithValue("@nameinsti", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@nameinsti", TextBox31.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox31.Text))
+                {
+                    cmd.Parameters.AddWithValue("@nameinsti", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@nameinsti", TextBox31.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox32.Text))
+                {
+                    cmd.Parameters.AddWithValue("@designation", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@designation", TextBox32.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox33.Text))
+                {
+                    cmd.Parameters.AddWithValue("@period_of_emp_from", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@period_of_emp_from", TextBox33.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox34.Text))
+                {
+                    cmd.Parameters.AddWithValue("@period_of_emp_to", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@period_of_emp_to", TextBox34.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(RadioButtonList3.SelectedItem.Text))
+                {
+                    cmd.Parameters.AddWithValue("@type_of_emp", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@type_of_emp", RadioButtonList3.SelectedItem.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox35.Text))
+                {
+                    cmd.Parameters.AddWithValue("@briefdetails", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@briefdetails", TextBox35.Text);
+                }
+                if (!string.IsNullOrWhiteSpace(TextBox36.Text))
+                {
+                    cmd.Parameters.AddWithValue("@officetelno", null);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@officetelno", TextBox36.Text);
+                }
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex1)
+            {
+                Response.Write("ERROR:" + ex1.ToString());
+            }
         }
 
         protected void test1_Click(object sender, EventArgs e)
@@ -242,6 +484,7 @@ namespace PhD
         protected void Previous2_Click(object sender, EventArgs e)
         {
             SetSelectedTab(TabIndex.ONE);
+
         }
 
         protected void Next3_Click(object sender, EventArgs e)
