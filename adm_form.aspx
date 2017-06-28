@@ -5,10 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="jquery-ui.theme.css" rel = "stylesheet" />
+    <link href="jquery-ui.theme.css" rel = "stylesheet" type="text/css" />
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="jquery-ui.js"></script>
     <link href="jquery-ui.css" rel="stylesheet" />
+    <link href="new_style.css" rel="stylesheet" type="text/css" />
  
     <script type="text/javascript">
 
@@ -117,8 +118,8 @@
     
     <style type="text/css">
         .auto-style1 {
-            color: #FF0000;
-            background-color: #FFFFFF;
+            color: #f44242;
+            background-color: #ff6d6d;
         }
         .auto-style2 {
             font-size: medium;
@@ -128,26 +129,27 @@
         }
         .auto-style4 {
             border-style: none;
-            width: 945px;
-            height: 278px;
+            width: 1085px;
+            height: 243px;
         }
         .auto-style9 {
             width: 250px;
-            height: 69px;
+            height: 22px;
             text-align: justify;
         }
         .auto-style10 {
             width: 551px;
-            height: 69px;
+            height: 22px;
             text-align: justify;
         }
         .auto-style12 {
-            height: 69px;
+            height: 22px;
             width: 133px;
             text-align: justify;
         }
         .auto-style22 {
             color: #FF0000;
+            font-size:small;
         }
         .auto-style24 {
             width: 1004px;
@@ -195,8 +197,9 @@
             text-align: justify;
         }
         .auto-style77 {
-            font-size: x-large;
+            font-size: xx-large;
             text-align: justify;
+            
         }
         .auto-style80 {
             text-align: justify;
@@ -311,6 +314,68 @@
             width: 150px;
             text-align: justify;
         }
+
+        .mystyle-1{
+            background-color: #c0e1ed;
+            position: relative;
+            clear: left;
+            padding: 10px;
+            margin: 0px;
+            top: 0px;
+            left: 0px;
+            font-color: #2258aa;
+
+        }
+
+        #basic_details{
+            border: 2px solid blue;
+            position: relative;
+            margin: 2px;
+            padding: 20px;
+
+        }
+
+        .auto-style142 {
+            width: 250px;
+            height: 49px;
+            text-align: justify;
+        }
+        .auto-style143 {
+            width: 551px;
+            height: 66px;
+            text-align: justify;
+        }
+        .auto-style144 {
+            height: 66px;
+            width: 133px;
+            text-align: justify;
+        }
+        .auto-style145 {
+            width: 551px;
+            height: 49px;
+            text-align: justify;
+        }
+        .auto-style146 {
+            height: 49px;
+            width: 133px;
+            text-align: justify;
+        }
+        .auto-style147 {
+            width: 250px;
+            text-align: justify;
+            height: 83px;
+        }
+        .auto-style148 {
+            width: 551px;
+            text-align: justify;
+            height: 83px;
+        }
+        .auto-style149 {
+            width: 133px;
+            text-align: justify;
+            height: 83px;
+        }
+
     </style>
 </head>
 <body>
@@ -348,17 +413,20 @@
             &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
 &nbsp;<br />
                 </div>
+                
         <p class="auto-style77">
-            <strong>Basic Details:</strong></p>
+            <div id="basic_details">
+             <div class="mystyle-1">
+            <strong >Basic Details:</strong> </div></p>
         <table class="auto-style4">
             <tr>
-                <td class="auto-style9"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
-                <td class="auto-style10">
+                <td class="auto-style142"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
+                <td class="auto-style145">
                     <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px" Height="35px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
-                <td class="auto-style12">Pincode:&nbsp; <span class="auto-style22">*</span></td>
-                <td class="auto-style9">
+                <td class="auto-style146">Pincode:&nbsp; <span class="auto-style22">*</span></td>
+                <td class="auto-style142">
             <strong>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
             </strong>
@@ -372,36 +440,43 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Telephone:&nbsp;</td>
-                <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="12" ></asp:TextBox>
+                <td class="auto-style9">
                     <br />
+                    Telephone:&nbsp;</td>
+                <td class="auto-style10">
+                    <br />
+            <strong>
+                    <asp:TextBox ID="TextBox38" runat="server" Height="23px" OnTextChanged="TextBox38_TextChanged" style="margin-right: 0px; margin-top: 0px" Width="43px"></asp:TextBox>
+                    -<asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="12" Height="23px" OnTextChanged="TextBox_Telephone_Delhi_TextChanged" style="margin-left: 3px" ></asp:TextBox>
+            </strong>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="(\(\d{3}\)|\d{3}-)?\d{8}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style12">Mobile No:&nbsp; <span class="auto-style22">*</span><br />
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True" MaxLength="10"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled" ValidationGroup="page1"></asp:RegularExpressionValidator>
             <strong>
                     <br />
+                    <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True" MaxLength="10" Height="16px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="TextBox_MobileNo" ErrorMessage="Enter Mobile no." ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
             </strong>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style63">Permanent Address: <span class="auto-style22">*</span></td>
-                <td class="auto-style64">
+                <td class="auto-style147">Permanent Address: <span class="auto-style22">*</span></td>
+                <td class="auto-style148">
                     <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="false" onchange="Sameaddrchange()" Text="Same as Address in Delhi" Width="250px" />
                     <asp:TextBox ID="TextBox_Per_Add" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Per_Add_TextChanged"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_Per_Add" ErrorMessage="It must not be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
-                <td class="auto-style65">Pincode:</td>
-                <td class="auto-style63">
-                    <asp:TextBox ID="TextBox_Per_Pincode" runat="server" MaxLength="6"></asp:TextBox>
+                <td class="auto-style149">Pincode:</td>
+                <td class="auto-style147">
                     <br />
                     <asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="TextBox_Per_Pincode" ErrorMessage="Enter a valid Pincode" ForeColor="Red" MaximumValue="110999" MinimumValue="110000" ValidationGroup="page1"></asp:RangeValidator>
+            <strong>
+                    <asp:TextBox ID="TextBox_Per_Pincode" runat="server" MaxLength="6" style="margin-bottom: 3px"></asp:TextBox>
+            </strong>
                     <br />
             <strong>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TextBox_Per_Pincode" ErrorMessage="Pin code cannot be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
@@ -411,15 +486,22 @@
             <tr>
                 <td class="auto-style63">Telephone:</td>
                 <td class="auto-style64">
-                    <asp:TextBox ID="TextBox_Per_Telephone" runat="server" MaxLength="10"></asp:TextBox>
+                    <br />
+                    <br />
+                    <asp:TextBox ID="TextBox39" runat="server" Height="23px" Width="40px"></asp:TextBox>
+                    -<strong><asp:TextBox ID="TextBox_Per_Telephone" runat="server" MaxLength="10" Height="23px" OnTextChanged="TextBox_Per_Telephone_TextChanged" style="margin-left: 5px"></asp:TextBox>
+            </strong>
+                    <br />
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
                     <br />
                 </td>
                 <td class="auto-style65">Mobile No:</td>
                 <td class="auto-style63">
-                    <asp:TextBox ID="TextBox_Per_MobileNo" runat="server" MaxLength="10"></asp:TextBox>
                     <br />
+            <strong>
+                    <asp:TextBox ID="TextBox_Per_MobileNo" runat="server" MaxLength="10"></asp:TextBox>
+            </strong>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="TextBox_Per_MobileNo" ErrorMessage="It must be numeric" ForeColor="Red" ValidationExpression="\d{10}" ValidationGroup="page1"></asp:RegularExpressionValidator>
                     </strong>
                     </strong>
@@ -472,9 +554,8 @@
                 </td>
             </tr>
         </table>
-        <p class="auto-style80">
-            &nbsp;&nbsp;
-        </p>
+      </div>   
+
         <p class="auto-style77">
             <strong>Educational Details:</strong></p>
         <table class="auto-style24" border="0">
@@ -503,7 +584,7 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_year" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox_Grad_year" ValidationGroup="page1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox_Grad_year" ErrorMessage="Year must be in 1980-2014" ForeColor="Red" MaximumValue="2014" MinimumValue="1980" ValidationGroup="page1"></asp:RangeValidator>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox_Grad_year" ErrorMessage="Year must be in 1980-2015" ForeColor="Red" MaximumValue="2015" MinimumValue="1980" ValidationGroup="page1"></asp:RangeValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_Div" runat="server" Height="39px" Width="160px"></asp:TextBox>

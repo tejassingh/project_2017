@@ -18,6 +18,7 @@ namespace PhD
             TWO = 2,
             THREE = 3,
             FOUR=4
+
         }
 
 
@@ -647,6 +648,21 @@ namespace PhD
         {
             Session["mytext"] = TextBox_MobileNo.Text;
             Response.Redirect("~/display_form.aspx");
+        }
+
+        protected void TextBox_Telephone_Delhi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox38_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox_Per_Telephone_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
