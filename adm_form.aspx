@@ -118,8 +118,8 @@
     
     <style type="text/css">
         .auto-style1 {
-            color: #f44242;
-            background-color: #ff6d6d;
+            color: #d173c7;
+            background-color: #d173c7;
         }
         .auto-style2 {
             font-size: medium;
@@ -130,20 +130,18 @@
         .auto-style4 {
             border-style: none;
             width: 1085px;
-            height: 243px;
+            height: 100px;
+            margin-top: 12px;
         }
         .auto-style9 {
             width: 250px;
-            height: 22px;
             text-align: justify;
         }
         .auto-style10 {
             width: 551px;
-            height: 22px;
             text-align: justify;
         }
         .auto-style12 {
-            height: 22px;
             width: 133px;
             text-align: justify;
         }
@@ -315,31 +313,45 @@
             text-align: justify;
         }
 
-        .mystyle-1{
-            background-color: #c0e1ed;
+        #mystyle-1{
+            background-color: #edc0e6;
             position: relative;
             clear: left;
             padding: 10px;
             margin: 0px;
-            top: 0px;
-            left: 0px;
-            font-color: #2258aa;
+            top: -14px;
+            left: -15px;
+            width: 1159px;
+            height: 29px;
+        }
+
+        #mystyle-2{
+            background-color: #edc0e6;
+            padding: 20px;
+        }
+
+        #educational_style{
+            border: 2px;
+            border-color: #b25baf;
+            border-style: outset;
+            position: relative;
+            margin: 2px;
+            padding: 20px;
+            border-radius: 5px;
 
         }
 
         #basic_details{
-            border: 2px solid blue;
+            border: 2px;
+            border-color: #b25baf;
+            border-style: outset;
             position: relative;
             margin: 2px;
             padding: 20px;
+            border-radius: 5px;
 
         }
 
-        .auto-style142 {
-            width: 250px;
-            height: 49px;
-            text-align: justify;
-        }
         .auto-style143 {
             width: 551px;
             height: 66px;
@@ -353,11 +365,6 @@
         .auto-style145 {
             width: 551px;
             height: 49px;
-            text-align: justify;
-        }
-        .auto-style146 {
-            height: 49px;
-            width: 133px;
             text-align: justify;
         }
         .auto-style147 {
@@ -374,6 +381,49 @@
             width: 133px;
             text-align: justify;
             height: 83px;
+        }
+
+        .auto-style152 {
+            width: 253px;
+            text-align: justify;
+        }
+        .auto-style153 {
+            width: 253px;
+            text-align: justify;
+            height: 83px;
+        }
+        .auto-style154 {
+            width: 253px;
+            text-align: justify;
+            height: 70px;
+        }
+
+        .auto-style155 {
+            width: 253px;
+            text-align: justify;
+            height: 63px;
+        }
+        .auto-style156 {
+            width: 551px;
+            text-align: justify;
+            height: 63px;
+        }
+        .auto-style157 {
+            width: 133px;
+            text-align: justify;
+            height: 63px;
+        }
+        .auto-style158 {
+            width: 250px;
+            text-align: justify;
+            height: 63px;
+        }
+
+        .auto-style159 {
+            left: -4px;
+            top: -14px;
+            width: 1148px;
+            height: 23px;
         }
 
     </style>
@@ -416,17 +466,19 @@
                 
         <p class="auto-style77">
             <div id="basic_details">
-             <div class="mystyle-1">
-            <strong >Basic Details:</strong> </div></p>
+                
+             <div id="mystyle-1" class="auto-style159">
+            <strong >Basic Details:</strong> </div>
+                <div id="mystyle-2">
         <table class="auto-style4">
             <tr>
-                <td class="auto-style142"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
-                <td class="auto-style145">
+                <td class="auto-style155"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
+                <td class="auto-style156">
                     <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px" Height="35px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
-                <td class="auto-style146">Pincode:&nbsp; <span class="auto-style22">*</span></td>
-                <td class="auto-style142">
+                <td class="auto-style157">Pincode:&nbsp; <span class="auto-style22">*</span></td>
+                <td class="auto-style158">
             <strong>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
             </strong>
@@ -440,7 +492,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style152">
                     <br />
                     Telephone:&nbsp;</td>
                 <td class="auto-style10">
@@ -464,7 +516,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style147">Permanent Address: <span class="auto-style22">*</span></td>
+                <td class="auto-style153">Permanent Address: <span class="auto-style22">*</span></td>
                 <td class="auto-style148">
                     <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="false" onchange="Sameaddrchange()" Text="Same as Address in Delhi" Width="250px" />
                     <asp:TextBox ID="TextBox_Per_Add" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Per_Add_TextChanged"></asp:TextBox>
@@ -484,7 +536,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style63">Telephone:</td>
+                <td class="auto-style154">Telephone:</td>
                 <td class="auto-style64">
                     <br />
                     <br />
@@ -554,9 +606,11 @@
                 </td>
             </tr>
         </table>
-      </div>   
+      </div> 
+            </div>
 
         <p class="auto-style77">
+            <div id="educational_style" >
             <strong>Educational Details:</strong></p>
         <table class="auto-style24" border="0">
             <tr>
@@ -674,6 +728,8 @@
                 </td>
             </tr>
         </table>
+            </div>
+
                 <p class="auto-style135">
                     <asp:Button ID="Next1" runat="server" Text="Save &amp; Next" Width="201px" OnClick="Next1_Click" ValidationGroup="page1" CssClass="ui-priority-primary"   />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -682,6 +738,7 @@
                 <p class="auto-style80">
                     &nbsp;</p>
     </div>
+        <div id="Research_style">
     <div id="Research">
     <p class="auto-style77">
         <strong>Research Details:</strong></p>
