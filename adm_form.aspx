@@ -248,20 +248,10 @@
         .auto-style83 {
             width: 50px;
         }
-        .auto-style91 {
-            height: 21px;
-            width: 485px;
-            text-align: justify;
-        }
         .auto-style94 {
             height: 21px;
             text-align: justify;
             width: 160px;
-        }
-        .auto-style101 {
-            height: 39px;
-            width: 485px;
-            text-align: justify;
         }
         .auto-style103 {
             height: 39px;
@@ -270,12 +260,12 @@
         }
         .auto-style105 {
             height: 39px;
-            width: 485px;
+            width: 150px;
             text-align: right;
         }
         .auto-style106 {
             height: 39px;
-            width: 160px;
+            width: 220px;
             text-align: left;
         }
         .auto-style109 {
@@ -375,7 +365,7 @@
                 <li><a href="#Basic">Basic Details</a></li>
                 <li><a href="#Research">Research Details</a></li>
                 <li><a href="#Upload_Doc">Upload Documents</a></li>
-                <li><a href="#View_Form">View Form</a></li>
+                <li><a href="#Submit_Form">Submit Form</a></li>
                 <li><a href="#Print_Form">Print Form</a></li>
             </ul>
             <div id="Basic">
@@ -397,7 +387,8 @@
 
 
             &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page1" ValidateRequestMode="Enabled"></asp:RequiredFieldValidator>
-&nbsp;</div>
+&nbsp;<br />
+                </div>
         <p class="auto-style77">
             <strong>Basic Details:</strong></p>
         <table class="auto-style4">
@@ -411,13 +402,13 @@
                 <td class="auto-style9">
                     <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" onblur="change_txt1()" CausesValidation="True" MaxLength="6"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="TextBox_Pincode_Delhi" ErrorMessage="Enter a valid pincode" ForeColor="Red" MaximumValue="110999" MinimumValue="110000" Type="Integer" ValidationGroup="page1"></asp:RangeValidator>
                     <br />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextBox_Pincode_Delhi" ErrorMessage="Pin code cannot be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">Telephone:&nbsp; </td>
+                <td class="auto-style9">Telephone:&nbsp;</td>
                 <td class="auto-style10">
                     <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" onblur="change_txt1()" CausesValidation="True" MaxLength="12" ></asp:TextBox>
                     <br />
@@ -436,7 +427,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style63">Permanent Address:</td>
+                <td class="auto-style63">Permanent Address: <span class="auto-style22">*</span></td>
                 <td class="auto-style64">
                     <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="false" onchange="Sameaddrchange()" Text="Same as Address in Delhi" Width="250px" OnCheckedChanged="CheckBox1_CheckedChanged1" />
                     <asp:TextBox ID="TextBox_Per_Add" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Per_Add_TextChanged"></asp:TextBox>
@@ -446,7 +437,7 @@
                 <td class="auto-style63">
                     <asp:TextBox ID="TextBox_Per_Pincode" runat="server" MaxLength="6"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="TextBox_Per_Pincode" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
+                    <asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="TextBox_Per_Pincode" ErrorMessage="Enter a valid Pincode" ForeColor="Red" MaximumValue="110999" MinimumValue="110000" ValidationGroup="page1"></asp:RangeValidator>
                     <br />
             <strong>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TextBox_Per_Pincode" ErrorMessage="Pin code cannot be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
@@ -495,7 +486,7 @@
             <strong>Are you pursuing any other course in this or any other University/Instituition?</strong></td>
                 <td class="auto-style83">
             <strong>
-                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style57" RepeatDirection="Horizontal" Width="187px">
+                        <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="auto-style57" RepeatDirection="Horizontal" Width="187px" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                             <asp:ListItem>YES</asp:ListItem>
                             <asp:ListItem>NO</asp:ListItem>
                         </asp:RadioButtonList>
@@ -524,14 +515,23 @@
             <strong>Educational Details:</strong></p>
         <table class="auto-style24" border="0">
             <tr>
-                <td class="auto-style91" style="border-style: solid; border-width: thin"><strong>Examination passed:</strong></td>
+                <td class="auto-style140" style="border-style: solid; border-width: thin"><strong>Examination passed:</strong></td>
                 <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>University</strong></td>
                 <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>Year</strong></td>
                 <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>Div./Grade</strong></td>
-                <td class="auto-style94" style="border-style: solid; border-width: thin"><strong>Subject(s)</strong></td>
+                <td class="auto-style138" style="border-style: solid; border-width: thin"><strong>Subject(s)</strong></td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>B.A/B.Sc./B.Com.(Hons/Pass)/B.B.A./B.Tech.</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin">
+                    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="ui-priority-primary" Height="54px" Width="135px">
+                        <asp:ListItem>B.A.</asp:ListItem>
+                        <asp:ListItem>B.Sc.</asp:ListItem>
+                        <asp:ListItem>B.Com(hons.)</asp:ListItem>
+                        <asp:ListItem>B.Com.(Pass)</asp:ListItem>
+                        <asp:ListItem>B.Tech.</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Select Graduation Course" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+                </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_Uni" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ValidationGroup="page1" ForeColor="Red" ControlToValidate="TextBox_Grad_Uni"></asp:RequiredFieldValidator>
@@ -539,17 +539,29 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_year" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox_Grad_year" ValidationGroup="page1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox_Grad_year" ErrorMessage="Year must be in 1980-2014" ForeColor="Red" MaximumValue="2014" MinimumValue="1980" ValidationGroup="page1"></asp:RangeValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox_Grad_Div" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="TextBox_Grad_Div" ValidationGroup="page1" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator4" runat="server" ControlToValidate="TextBox_Grad_Div" ErrorMessage="Division must be in 1-3" ForeColor="Red" MaximumValue="3" MinimumValue="1" ValidationGroup="page1"></asp:RangeValidator>
                 </td>
                 <td class="auto-style106">
                     <asp:TextBox ID="TextBox8" runat="server" Height="39px" OnTextChanged="TextBox8_TextChanged" Width="160px"></asp:TextBox>
-                    <span class="auto-style22">*</span></td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="TextBox8" ErrorMessage="*" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+                </td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>M.A./M.Sc./M.C.A./M.Com./M.B.A./M.Tech.</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin">
+                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="ui-priority-primary" Height="16px" Width="134px">
+                        <asp:ListItem>M.A.</asp:ListItem>
+                        <asp:ListItem>M.C.A</asp:ListItem>
+                        <asp:ListItem>M.Sc.</asp:ListItem>
+                        <asp:ListItem>M.Com.</asp:ListItem>
+                        <asp:ListItem>M.Tech</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="DropDownList2" ErrorMessage="Select Masters Course" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
+                </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox9" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="TextBox9" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
@@ -557,18 +569,21 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox10" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="TextBox10" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator5" runat="server" ControlToValidate="TextBox10" ErrorMessage="Year must be in 1983-2017" ForeColor="Red" MaximumValue="2017" MinimumValue="1983" ValidationGroup="page1"></asp:RangeValidator>
                 </td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox11" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="TextBox11" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator6" runat="server" ControlToValidate="TextBox11" ErrorMessage="Division must be in 1-3" ForeColor="Red" MaximumValue="3" MinimumValue="1" ValidationGroup="page1"></asp:RangeValidator>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox12" runat="server" Height="39px" Width="160px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="TextBox12" ErrorMessage="RequiredFieldValidator" ForeColor="Red" ValidationGroup="page1">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>&nbsp; M.Phil in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part -I</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin"><strong>M.Phil<br />
+                    in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Part -I</strong></td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox13" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
@@ -578,7 +593,7 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox15" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox16" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
             </tr>
@@ -593,12 +608,12 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox19" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox20" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style101" style="border-style: solid; border-width: thin"><strong>Any other Examination passed:</strong></td>
+                <td class="auto-style141" style="border-style: solid; border-width: thin"><strong>Any other Examination passed:</strong></td>
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox21" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
@@ -608,7 +623,7 @@
                 <td class="auto-style103">
                     <asp:TextBox ID="TextBox23" runat="server" Height="39px" Width="160px"></asp:TextBox>
                 </td>
-                <td class="auto-style103">
+                <td class="auto-style139">
                     <asp:TextBox ID="TextBox24" runat="server" Height="39px" Width="160px"></asp:TextBox>
             </strong>
                 </td>
@@ -631,12 +646,12 @@
             <strong>Fellowship/Scholarship under</strong></td>
                 <td class="auto-style110">
             <strong>
-			<asp:TextBox ID="TextBox27" runat="server" Width="270px"></asp:TextBox>
+			<asp:TextBox ID="TextBox27" runat="server" Width="273px" Height="28px"></asp:TextBox>
 			scheme</strong></td>
             </tr>
             <tr>
                 <td class="auto-style109">
-            <strong><span class="auto-style2">Languages Known:</span></strong></td>
+            <strong><span class="auto-style2">Languages Known:&nbsp; <span class="auto-style22">*</span></span></strong></td>
                 <td class="auto-style110"><strong>
             <asp:TextBox ID="TextBox_Languages0" runat="server" CssClass="auto-style53" TextMode="MultiLine"></asp:TextBox>
                     <span class="auto-style53">
@@ -660,18 +675,7 @@
                 </td>
             </tr>
         </table>
-		<div class="auto-style134">
-		    <span class="auto-style3">
-            <br />
-            UNDERTAKING DECLARATION:<br />
-		<br />
-		</span>a) I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <asp:TextBox ID="TextBox37" runat="server" ReadOnly="True"></asp:TextBox> University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
-		b)I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
-            <br />
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page2"></asp:RequiredFieldValidator>
-      
-            </strong>
-        </div>
+		
         <p class="auto-style75">
             <table class="auto-style54">
                 <tr>
@@ -952,7 +956,7 @@
         
            <br />
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+           <br />
            <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="test_txt1" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page3"></asp:RequiredFieldValidator>
@@ -984,25 +988,50 @@
             </strong>
 
     </div>
-    <div id="View_Form">
+    <div id="Submit_Form">
+
+
+        <div class="auto-style134">
+		    <span class="auto-style3">
+            <br />
+            UNDERTAKING DECLARATION:<br />
+		    <br />
+		</span>I have carefully gone through the rules as prescribed under Ordinance-VIB and by the Board relating to the Doctories of Philosphy (Ph.D)Course and I undertake to abide by them during the tenure of my research in the department of <asp:TextBox ID="TextBoxD2" runat="server" BorderStyle="None"></asp:TextBox>
+            University of Delhi. I am aware that disputes if any, arising out of/or relating to any matter whatsoever,concerning registration/cancellation/submission of thesis or any other matter shall be subject to the exclusive jurisdiction of the competent courts in Delhi only.<br />
+		    <br />
+            I declare that i shall submit myself toi the disciplinary jurisdiction of the authorities of the University who may be vested with the powers to exercise discipline under the Act, the statues he Ordinance and the Rules that may be framed by the University/Board from time to time in this behalf.&nbsp; 
+            <br />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="auto-style1" ErrorMessage="Select Department Name." InitialValue="Select Department" ControlToValidate="DropDownListDepartment" ValidationGroup="page4"></asp:RequiredFieldValidator>
+            </strong>
+        </div>
 
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="test_txt2" runat="server"></asp:TextBox>
-        <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="test_txt2" ErrorMessage="Field must not be empty" ForeColor="Red" ValidationGroup="page4"></asp:RequiredFieldValidator>
+&nbsp;
         <br />
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><asp:Button ID="Previous3" runat="server" OnClick="Previous3_Click" Text="Previous" ValidationGroup="page3" />
             </strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <strong>
-        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" ValidationGroup="page4" />
+        <asp:Button ID="Next4" runat="server" Text="Submit" Width="70px" ValidationGroup="page4" OnClick="Next4_Click1" />
+            <br />
+        <br />
+        <br />
+        <br />
+        <br />
             </strong>
 
     </div>
             <div id="Print_Form">
+
+                <br />
+                <br />
+                <br />
+                <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <asp:Button ID="Button2" runat="server" Text="View Form" OnClick="Button2_Click1" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <asp:Button ID="Button4" runat="server" Text="Print Form" OnClick="Button4_Click1" />
 
             </div>
     </div>
