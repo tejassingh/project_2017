@@ -53,30 +53,7 @@ namespace PhD
             
         }
 
-        protected void RadioButtonList2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RadioButtonList2.SelectedItem.Text == "YES")
-            {
-                TextBox31.Enabled = true;
-                TextBox32.Enabled = true;
-                TextBox33.Enabled = true;
-                TextBox34.Enabled = true;
-                RadioButtonList3.Enabled = true;
-                TextBox35.Enabled = true;
-                TextBox36.Enabled = true;
-
-            }
-            else if (RadioButtonList2.SelectedItem.Text == "NO")
-            {
-                TextBox31.Enabled = false;
-                TextBox32.Enabled = false;
-                TextBox33.Enabled = false;
-                TextBox34.Enabled = false;
-                RadioButtonList3.Enabled = false;
-                TextBox35.Enabled = false;
-                TextBox36.Enabled = false;
-            }
-        }
+       
 
         protected void TextBox31_TextChanged(object sender, EventArgs e)
         {
@@ -626,5 +603,10 @@ namespace PhD
 
 
 
+
+        protected void CheckBox1_CheckedChanged1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,6 +13,27 @@
     <script type="text/javascript">
 
 
+        function change_txt1() {
+            var chckbx = document.getElementById("CheckBox1").checked;
+            var txtbox1 = document.getElementById("TextBox_Address_Delhi");
+            var txtbox2 = document.getElementById("TextBox_Per_Add");
+            var txtbox3 = document.getElementById("TextBox_Pincode_Delhi");
+            var txtbox4 = document.getElementById("TextBox_Per_Pincode");
+            var txtbox5 = document.getElementById("TextBox_Telephone_Delhi")
+            var txtbox6 = document.getElementById("TextBox_MobileNo")
+            var txtbox7 = document.getElementById("TextBox_Per_Telephone");
+            var txtbox8 = document.getElementById("TextBox_Per_MobileNo");
+            if (chckbx == true) {
+                txtbox2.value = txtbox1.value;
+                txtbox4.value = txtbox3.value;
+                txtbox7.value = txtbox5.value;
+                txtbox8.value = txtbox6.value;
+
+
+            }
+        }
+
+
 
         function Departmentindexchange() {
             var ddmenu = document.getElementById('DropDownListDepartment');
@@ -37,13 +58,23 @@
             var txtbox2 = document.getElementById("TextBox_Per_Add");
             var txtbox3 = document.getElementById("TextBox_Pincode_Delhi");
             var txtbox4 = document.getElementById("TextBox_Per_Pincode");
+            var txtbox5 = document.getElementById("TextBox_Telephone_Delhi")
+            var txtbox6 = document.getElementById("TextBox_MobileNo")
+            var txtbox7 = document.getElementById("TextBox_Per_Telephone");
+            var txtbox8 = document.getElementById("TextBox_Per_MobileNo");
             if (chckbx == true) {
                 txtbox2.value = txtbox1.value;
                 txtbox4.value = txtbox3.value;
+                txtbox7.value = txtbox5.value;
+                txtbox8.value = txtbox6.value;
+
+
             }
             else {
                 txtbox2.value = "";
                 txtbox4.value = "";
+                txtbox7.value = "";
+                txtbox8.value = "";
             }
         }
 
@@ -61,15 +92,22 @@
             var currTab = $("#<%= Hdnfldtabs.ClientID %>").val();
 
             
-            $('#tabs').tabs("option", "active", currTab);
+     /*       $('#tabs').tabs("option", "active", currTab);
             var arr1 = [0, 1, 2, 3,4];
 
             arr1.splice(currTab, 1);
             $('#tabs').tabs("option", "disabled", arr1);
             
 
-
-
+*/
+            $('#RadioButtonList2 input').click(function () {
+                if ($('#RadioButtonList2 input:checked').val() == 'YES') {
+                    $('#employee_table').show();
+                }
+                else {
+                    $('#employee_table').hide();
+                }
+            });
 
 
 
@@ -366,12 +404,12 @@
             <tr>
                 <td class="auto-style9"><strong>Address in Delhi:<span class="auto-style22">&nbsp; *</span></td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Address_Delhi" runat="server" TextMode="MultiLine" Width="500px" onblur="change_txt1()"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Address_Delhi" ErrorMessage="It must be filled" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
                 <td class="auto-style12">Pincode:&nbsp; <span class="auto-style22">*</span></td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" CausesValidation="True" MaxLength="6"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Pincode_Delhi" runat="server" onblur="change_txt1()" CausesValidation="True" MaxLength="6"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_Pincode_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{6}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                     <br />
@@ -381,14 +419,14 @@
             <tr>
                 <td class="auto-style9">Telephone:&nbsp; </td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" CausesValidation="True" MaxLength="12" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox_Telephone_Delhi" runat="server" onblur="change_txt1()" CausesValidation="True" MaxLength="12" ></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_Telephone_Delhi" CssClass="auto-style22" ErrorMessage="It must be numeric." ValidationExpression="(\(\d{3}\)|\d{3}-)?\d{8}" ValidateRequestMode="Disabled"></asp:RegularExpressionValidator>
                 </td>
                 <td class="auto-style12">Mobile No:&nbsp; <span class="auto-style22">*</span><br />
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox_MobileNo" runat="server" CausesValidation="True" MaxLength="10"></asp:TextBox>
+                    <asp:TextBox ID="TextBox_MobileNo" runat="server" onblur="change_txt1()" CausesValidation="True" MaxLength="10"></asp:TextBox>
                     <br />
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox_MobileNo" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}" ValidateRequestMode="Disabled" ValidationGroup="page1"></asp:RegularExpressionValidator>
             <strong>
@@ -400,7 +438,7 @@
             <tr>
                 <td class="auto-style63">Permanent Address:</td>
                 <td class="auto-style64">
-                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="false" onchange="Sameaddrchange()" Text="Same as Address in Delhi" Width="250px" />
+                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="false" onchange="Sameaddrchange()" Text="Same as Address in Delhi" Width="250px" OnCheckedChanged="CheckBox1_CheckedChanged1" />
                     <asp:TextBox ID="TextBox_Per_Add" runat="server" TextMode="MultiLine" Width="500px" OnTextChanged="TextBox_Per_Add_TextChanged"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_Per_Add" ErrorMessage="It must not be empty" ForeColor="Red" ValidationGroup="page1"></asp:RequiredFieldValidator>
                 </td>
@@ -420,7 +458,7 @@
                 <td class="auto-style64">
                     <asp:TextBox ID="TextBox_Per_Telephone" runat="server" MaxLength="10"></asp:TextBox>
                     <br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="\d{10}"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="TextBox_Per_Telephone" CssClass="auto-style22" ErrorMessage="It must be numeric" ValidationExpression="(\(\d{3}\)|\d{3}-)?\d{8}"></asp:RegularExpressionValidator>
                     <br />
                 </td>
                 <td class="auto-style65">Mobile No:</td>
@@ -639,16 +677,16 @@
                 <tr>
                     <td class="auto-style67"><strong>Are you currently employed?&nbsp; </strong></td>
                     <td class="auto-style80">
-                        <asp:RadioButtonList ID="RadioButtonList2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" RepeatDirection="Horizontal">
-                            <asp:ListItem>YES</asp:ListItem>
-                            <asp:ListItem>NO</asp:ListItem>
+                        <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="YES">YES</asp:ListItem>
+                            <asp:ListItem Value="NO">NO</asp:ListItem>
                         </asp:RadioButtonList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ErrorMessage="Select Yes/No" ForeColor="Red" ValidationGroup="page2" ControlToValidate="RadioButtonList2">*</asp:RequiredFieldValidator>
                     </td>
                 </tr>
             </table>
             <br />
-        <table class="auto-style4">
+        <table id="employee_table" class="auto-style4" style="display:none">
             <tr>
                 <td class="auto-style120"><strong>Name of the institution where employed</strong></td>
                 <td class="auto-style131" colspan="4">
@@ -729,7 +767,7 @@
                    <td class="auto-style145">&nbsp;&nbsp;&nbsp;&nbsp;
                        <asp:Label ID="Lb1" runat="server"></asp:Label>
                        &nbsp;
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidatorxii_cert" runat="server" ControlToValidate="FileUpload1" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidatorxii_cert" runat="server" ControlToValidate="FileUploadxii_certi" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
                </tr>
                <tr>
