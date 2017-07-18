@@ -731,7 +731,7 @@
                        <asp:Button ID="Button_upload1" runat="server" OnClick="upload_button1_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;&nbsp;&nbsp;&nbsp;
-                       <asp:Label ID="Label1" runat="server"></asp:Label>
+                       <asp:Label ID="Labelxii_certi" runat="server"></asp:Label>
                        &nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="FileUpload1" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -747,7 +747,7 @@
                        <asp:Button ID="Button_upload2" runat="server" OnClick="upload_button2_Click" CausesValidation="False" style="width: 99px" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;&nbsp;
-                       <asp:Label ID="Label2" runat="server"></asp:Label>
+                       <asp:Label ID="Labelx_certi" runat="server"></asp:Label>
                        &nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="FileUpload2" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -763,7 +763,7 @@
                        <asp:Button ID="Button_upload3" runat="server" OnClick="upload_button3_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;&nbsp;
-                       <asp:Label ID="Label3" runat="server"></asp:Label>
+                       <asp:Label ID="Labelxii_marksheet" runat="server"></asp:Label>
                        &nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="FileUpload3" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -780,7 +780,7 @@
                        <asp:Button ID="Button_upload4" runat="server" OnClick="upload_button4_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;&nbsp;
-                       <asp:Label ID="Label4" runat="server"></asp:Label>
+                       <asp:Label ID="Labelx_marksheet" runat="server"></asp:Label>
                        &nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -797,7 +797,7 @@
                        <asp:Button ID="Button_upload5" runat="server" OnClick="upload_button5_Click"  CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;&nbsp;
-                       <asp:Label ID="Label5" runat="server"></asp:Label>
+                       <asp:Label ID="Labelgrad_marksheet" runat="server"></asp:Label>
                        &nbsp;&nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="FileUpload5" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -814,7 +814,7 @@
                        <asp:Button ID="Button_upload6" runat="server" OnClick="upload_button6_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;&nbsp;
-                       <asp:Label ID="Label6" runat="server"></asp:Label>
+                       <asp:Label ID="Labelpg_marksheet" runat="server"></asp:Label>
                        &nbsp;&nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="FileUpload6" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -830,7 +830,7 @@
                        <asp:Button ID="Button_upload7" runat="server" OnClick="upload_button7_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;
-                       <asp:Label ID="Label7" runat="server"></asp:Label>
+                       <asp:Label ID="Labelgrad_certi" runat="server"></asp:Label>
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="FileUpload7" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -846,7 +846,7 @@
                        <asp:Button ID="Button_upload8" runat="server" OnClick="upload_button8_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;
-                       <asp:Label ID="Label8" runat="server"></asp:Label>
+                       <asp:Label ID="Labelpg_certi" runat="server"></asp:Label>
                        &nbsp;&nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="FileUpload8" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
@@ -862,7 +862,7 @@
                        <asp:Button ID="Button_upload9" runat="server" OnClick="upload_button9_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;
-                       <asp:Label ID="Label9" runat="server"></asp:Label>
+                       <asp:Label ID="Labeldoc_hod" runat="server"></asp:Label>
                        &nbsp;&nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="FileUpload9" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -878,7 +878,7 @@
                        <asp:Button ID="Button_upload10" runat="server" OnClick="upload_button10_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;
-                       <asp:Label ID="Label10" runat="server"></asp:Label>
+                       <asp:Label ID="Labelsignature" runat="server"></asp:Label>
                        &nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="FileUpload10" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
@@ -894,7 +894,7 @@
                        <asp:Button ID="Button_upload11" runat="server" OnClick="upload_button11_Click" CausesValidation="False" Text="Upload File" />
                        &nbsp;</td>
                    <td class="auto-style145">&nbsp;
-                       <asp:Label ID="Label11" runat="server"></asp:Label>
+                       <asp:Label ID="Labelphoto" runat="server"></asp:Label>
                        &nbsp;&nbsp;
                        <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="FileUpload11" ErrorMessage="Field must not be empty" ForeColor="Red"></asp:RequiredFieldValidator>
                    </td>
