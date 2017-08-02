@@ -107,6 +107,7 @@ namespace PhD
                         TextBox_AnyOther_Year.Text = (usrReader_Educational_Details.GetValue(20).ToString());
                         TextBox_AnyOther_Div.Text = (usrReader_Educational_Details.GetValue(21).ToString());
                         TextBox_AnyOther_Subjects.Text = (usrReader_Educational_Details.GetValue(22).ToString());
+                        TextBox_AnyOther_Exam.Text = (usrReader_Educational_Details.GetValue(23).ToString());
                     }
                     con.Close();
                 }
@@ -308,7 +309,7 @@ namespace PhD
                 con.Close();
                 if (result_Education == 0)
                 {
-                    string insertQuery1 = "insert into [Educational_Details] values(@usrid,@gradcourse,@graduni,@gradyear,@graddiv,@gradsub,@pgradcourse,@graduni,@pgradyear,@pgraddiv,@pgradsub,@mphiluni1,@mphilyr1,@mphildiv1,@mphilsub1,@mphiluni2,@mphilyr2,@mphildiv2,@mphilsub2,@anyotherexuni,@anyotherexyr,@anyotherexdiv,@anyotherexsub)";
+                    string insertQuery1 = "insert into [Educational_Details] values(@usrid,@gradcourse,@graduni,@gradyear,@graddiv,@gradsub,@pgradcourse,@graduni,@pgradyear,@pgraddiv,@pgradsub,@mphiluni1,@mphilyr1,@mphildiv1,@mphilsub1,@mphiluni2,@mphilyr2,@mphildiv2,@mphilsub2,@anyotherexuni,@anyotherexyr,@anyotherexdiv,@anyotherexsub,@anyotherexam)";
                     con.Open();
                     SqlCommand cmd1 = new SqlCommand(insertQuery1, con);
                     cmd1.Parameters.AddWithValue("@usrid", Label_UserID.Text);
@@ -417,6 +418,14 @@ namespace PhD
                     else
                     {
                         cmd1.Parameters.AddWithValue("@anyotherexsub", TextBox_AnyOther_Subjects.Text);
+                    }
+                    if (string.IsNullOrWhiteSpace(TextBox_AnyOther_Exam.Text))
+                    {
+                        cmd1.Parameters.AddWithValue("@anyotherexam", (object)DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd1.Parameters.AddWithValue("@anyotherexam", TextBox_AnyOther_Exam.Text);
                     }
                     cmd1.ExecuteNonQuery();
                     con.Close();
@@ -641,12 +650,12 @@ namespace PhD
                         TextBox_Languages0.Text = (userdata_reader.GetValue(2).ToString());
                         TextBox_Research_Exp.Text = (userdata_reader.GetValue(3).ToString());
                         TextBox_Research_Topic.Text = (userdata_reader.GetValue(4).ToString());
-                    //    RadioButtonList_Currently_Emp.SelectedItem.Text = (userdata_reader.GetValue(5).ToString());
+                        RadioButtonList_Currently_Emp.SelectedValue = (userdata_reader.GetValue(5).ToString());
                         TextBox_Name_Insti.Text = (userdata_reader.GetValue(6).ToString());
                         TextBox_Designation.Text = (userdata_reader.GetValue(7).ToString());
                         TextBox_From_Date.Text = (userdata_reader.GetValue(8).ToString());
                         TextBox_To_Date.Text = (userdata_reader.GetValue(9).ToString());
-                     //   RadioButtonList_Type_Emp.SelectedItem.Text = (userdata_reader.GetValue(10).ToString());
+                        RadioButtonList_Type_Emp.SelectedValue = (userdata_reader.GetValue(10).ToString());
                         TextBox_Brief_Details.Text = (userdata_reader.GetValue(11).ToString());
                         TextBox_Office_TelNo.Text = (userdata_reader.GetValue(12).ToString());
                     }
@@ -902,453 +911,6 @@ namespace PhD
             SetSelectedTab(TabIndex.THREE);
         }
 
-        protected void Upload_Click(object sender, EventArgs e)
-        {
-            string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            SqlConnection con = new SqlConnection(CS);
-            string checkuser = "select count(*) from [Upload_Documents] where UsrID='" + Label_UserID.Text + "'";
-            SqlCommand cmd = new SqlCommand(checkuser, con);
-            con.Open();
-            Int32 result = (Int32)cmd.ExecuteScalar();
-            con.Close();
-            if (result == 0)
-            {
-                //string insertQuery = "insert into [Upload_Doc] values(@usrid,@xiicertifile,@xiicertimime,@xiicertibindata,@xiicertidatetime,@xcertifile,@xcertimime,@xcertibindata,@xcertidatetime,@xiimarksheetfile,@xiimarksheetmime,@xiimarksheetbindata,@xiimarksheetdatetime,@xmarksheetfile,@xmarksheetmime,@xmarksheetbindata,@xmarksheetdatetime,@gradmarkfile,@gradmarkmime,@gradmarkbindata,@gradmarkdatetime,@pgradmarkfile,@pgradmarkmime,@pgradmarkbindata,@pgradmarkdatetime,@gradcertifile,@gradcertimime,@gradcertibindata,@gradcertidatetime,@pgradcertifile,@pgradcertimime,@pgradcertibindata,@pgradcertidatetime,@dochodfile,@dochodmime,@dochodbindata,@dochoddatetime,@signfile,@signmime,@signbindata,@signdatetime,@photofile,@photomime,@photobindata,@photodatetime)";
-                string insertQuery = "insert into [Upload_Documents] values(@usrid,@xiicertifile,@xiicertidatetime,@xcertifile,@xcertidatetime,@xiimarksheetfile,xiimarksheetdatetime,@xmarksheetfile,@xmarksheetdatetime,@gradmarkfile,@gradmarkdatetime,@pgradmarkfile,@pgradmarkdatetime,@gradcertifile,@gradcertidatetime,@pgradcertifile,@pgradcertidatetime,@dochodfile,@dochoddatetime,@signfile,@signdatetime,@photofile,@photodatetime)";
-                SqlCommand cmd1 = new SqlCommand(insertQuery, con);
-                cmd1.Parameters.AddWithValue("@usrid", Label_UserID.Text);
-                
-                if (FileUpload1.PostedFile == null || string.IsNullOrEmpty(FileUpload1.PostedFile.FileName) || FileUpload1.PostedFile.InputStream == null)
-                {
-                    Labelxii_certi.Text = "Error - Unable to upload XII Certificate. Please Try again.";
-                    Labelxii_certi.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelxii_certi.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelxii_certi.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload1.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelxii_certi.Text = "Maximum file size 25KB exceeded.";
-                            Labelxii_certi.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload1.SaveAs(Server.MapPath("~/Uploads/"+ Label_UserID.Text + "/xii_certi_" + FileUpload1.FileName));
-                            //cmd1.Parameters.AddWithValue("@xiicertifile", "~/Uploads/" + Label_UserID.Text + "/xii_certi_" + FileUpload1.FileName);
-                            //cmd1.Parameters.AddWithValue("xiicertimime", FileUpload1.PostedFile.ContentType);
-                            //byte[] imagebytes1 = new byte[FileUpload1.PostedFile.InputStream.Length + 1];
-                            //FileUpload1.PostedFile.InputStream.Read(imagebytes1, 0, imagebytes1.Length);
-                            //cmd1.Parameters.AddWithValue("@xiicertibindata", imagebytes1);
-                            
-                            Session["ImageBytes1"] = FileUpload1.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelxii_certi.Text = "File Uploaded";
-                            Labelxii_certi.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@xiicertidatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload2.PostedFile == null || string.IsNullOrEmpty(FileUpload2.PostedFile.FileName) || FileUpload2.PostedFile.InputStream == null)
-                {
-                    Labelx_certi.Text = "Error - Unable to upload X Certificate. Please Try again.";
-                    Labelx_certi.ForeColor = System.Drawing.Color.Red;
-                }
-
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload2.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelx_certi.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelx_certi.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload2.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelx_certi.Text = "Maximum file size 25KB exceeded.";
-                            Labelx_certi.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload2.SaveAs(Server.MapPath("~/Uploads/101" + Label_UserID.Text + "/x_certi_" + FileUpload2.FileName));
-                            //cmd1.Parameters.AddWithValue("@xcertifile", "~/Uploads/" + Label_UserID.Text + "/x_certi_" + FileUpload2.FileName);
-                            //cmd1.Parameters.AddWithValue("xcertimime", FileUpload2.PostedFile.ContentType);
-                            //byte[] imagebytes2 = new byte[FileUpload2.PostedFile.InputStream.Length + 1];
-                            //FileUpload2.PostedFile.InputStream.Read(imagebytes2, 0, imagebytes2.Length);
-                            //cmd1.Parameters.AddWithValue("@xcertibindata", imagebytes2);
-                            Session["ImageBytes2"] = FileUpload2.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelx_certi.Text = "File Uploaded";
-                            Labelx_certi.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@xcertidatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload3.PostedFile == null || string.IsNullOrEmpty(FileUpload3.PostedFile.FileName) || FileUpload3.PostedFile.InputStream == null)
-                {
-                    Labelxii_marksheet.Text = "Error - Unable to upload XII Marksheet. Please Try again.";
-                    Labelxii_marksheet.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload3.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelxii_marksheet.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelxii_marksheet.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload3.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelxii_marksheet.Text = "Maximum file size 25KB exceeded.";
-                            Labelxii_marksheet.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload3.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/xii_marksheet_" + FileUpload3.FileName));
-                            //cmd1.Parameters.AddWithValue("@xiimarksheetfile", "~/Uploads/" + Label_UserID.Text + "/xii_marksheet_" + FileUpload3.FileName);
-                            /*cmd1.Parameters.AddWithValue("@xiimarksheetmime", FileUpload3.PostedFile.ContentType);
-                            byte[] imagebytes3 = new byte[FileUpload3.PostedFile.InputStream.Length + 1];
-                            FileUpload3.PostedFile.InputStream.Read(imagebytes3, 0, imagebytes3.Length);
-                            cmd1.Parameters.AddWithValue("@xiimarksheetbindata", imagebytes3);*/
-                            Session["ImageBytes3"] = FileUpload3.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelxii_marksheet.Text = "File Uploaded";
-                            Labelxii_marksheet.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@xiimarksheetdatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload4.PostedFile == null || string.IsNullOrEmpty(FileUpload4.PostedFile.FileName) || FileUpload4.PostedFile.InputStream == null)
-                {
-                    Labelx_marksheet.Text = "Error - Unable to upload X Marksheet. Please Try again.";
-                    Labelx_marksheet.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload4.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelx_marksheet.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelx_marksheet.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload4.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelx_marksheet.Text = "Maximum file size 25KB exceeded.";
-                            Labelx_marksheet.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload4.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/x_marksheet_" + FileUpload4.FileName));
-                            //cmd1.Parameters.AddWithValue("@xmarksheetfile", "~/Uploads/" + Label_UserID.Text + "/x_marksheet_" + FileUpload4.FileName);
-                            /*cmd1.Parameters.AddWithValue("@xmarksheetmime", FileUpload4.PostedFile.ContentType);
-                            byte[] imagebytes4 = new byte[FileUpload4.PostedFile.InputStream.Length + 1];
-                            FileUpload4.PostedFile.InputStream.Read(imagebytes4, 0, imagebytes4.Length);
-                            cmd1.Parameters.AddWithValue("@xmarksheetbindata", imagebytes4);*/
-                            Session["ImageBytes4"] = FileUpload4.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelx_marksheet.Text = "File Uploaded";
-                            Labelx_marksheet.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@xmarksheetdatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload5.PostedFile == null || string.IsNullOrEmpty(FileUpload5.PostedFile.FileName) || FileUpload5.PostedFile.InputStream == null)
-                {
-                    Labelgrad_marksheet.Text = "Error - Unable to upload Graduation Marksheet. Please Try again.";
-                    Labelgrad_marksheet.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload5.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelgrad_marksheet.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelgrad_marksheet.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload5.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelgrad_marksheet.Text = "Maximum file size 25KB exceeded.";
-                            Labelgrad_marksheet.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload5.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/grad_marksheet_" + FileUpload5.FileName));
-                            //cmd1.Parameters.AddWithValue("@gradmarkfile", "~/Uploads/" + Label_UserID.Text + "/grad_marksheet_" + FileUpload5.FileName);
-                            /*cmd1.Parameters.AddWithValue("@gradmarkmime", FileUpload5.PostedFile.ContentType);
-                            byte[] imagebytes5 = new byte[FileUpload5.PostedFile.InputStream.Length + 1];
-                            FileUpload5.PostedFile.InputStream.Read(imagebytes5, 0, imagebytes5.Length);
-                            cmd1.Parameters.AddWithValue("@gradmarkbindata", imagebytes5);*/
-                            Session["ImageBytes5"] = FileUpload5.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelgrad_marksheet.Text = "File Uploaded";
-                            Labelgrad_marksheet.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@gradmarkdatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload6.PostedFile == null || string.IsNullOrEmpty(FileUpload6.PostedFile.FileName) || FileUpload6.PostedFile.InputStream == null)
-                {
-                    Labelpg_marksheet.Text = "Error - Unable to upload Post Graduation Marksheet. Please Try again.";
-                    Labelpg_marksheet.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload6.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelpg_marksheet.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelpg_marksheet.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload6.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelpg_marksheet.Text = "Maximum file size 25KB exceeded.";
-                            Labelpg_marksheet.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload6.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/pgrad_marksheet_" + FileUpload6.FileName));
-                            //cmd1.Parameters.AddWithValue("@pgradmarkfile", "~/Uploads/" + Label_UserID.Text + "/pgrad_marksheet_" + FileUpload6.FileName);
-                            /*cmd1.Parameters.AddWithValue("@pgradmarkmime", FileUpload6.PostedFile.ContentType);
-                            byte[] imagebytes6 = new byte[FileUpload6.PostedFile.InputStream.Length + 1];
-                            FileUpload6.PostedFile.InputStream.Read(imagebytes6, 0, imagebytes6.Length);
-                            cmd1.Parameters.AddWithValue("@pgradmarkbindata", imagebytes6);*/
-                            Session["ImageBytes6"] = FileUpload6.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelpg_marksheet.Text = "File Uploaded";
-                            Labelpg_marksheet.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@pgradmarkdatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload7.PostedFile == null || string.IsNullOrEmpty(FileUpload7.PostedFile.FileName) || FileUpload7.PostedFile.InputStream == null)
-                {
-                    Labelgrad_certi.Text = "Error - Unable to upload Graduation Certificate. Please Try again.";
-                    Labelgrad_certi.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload7.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelgrad_certi.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelgrad_certi.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload7.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelgrad_certi.Text = "Maximum file size 25KB exceeded.";
-                            Labelgrad_certi.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload7.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/grad_certi_" + FileUpload7.FileName));
-                            //cmd1.Parameters.AddWithValue("@gradcertifile", "~/Uploads/" + Label_UserID.Text + "/grad_certi_" + FileUpload7.FileName);
-                            /*cmd1.Parameters.AddWithValue("@gradcertimime", FileUpload7.PostedFile.ContentType);
-                            byte[] imagebytes7 = new byte[FileUpload7.PostedFile.InputStream.Length + 1];
-                            FileUpload7.PostedFile.InputStream.Read(imagebytes7, 0, imagebytes7.Length);
-                            cmd1.Parameters.AddWithValue("@gradcertibindata", imagebytes7);*/
-                            Session["ImageBytes7"] = FileUpload7.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelgrad_certi.Text = "File Uploaded";
-                            Labelgrad_certi.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@gradcertidatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload8.PostedFile == null || string.IsNullOrEmpty(FileUpload8.PostedFile.FileName) || FileUpload8.PostedFile.InputStream == null)
-                {
-                    Labelpg_certi.Text = "Error - Unable to upload Post Graduation Certificate. Please Try again.";
-                    Labelpg_certi.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload8.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelpg_certi.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelpg_certi.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload8.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelpg_certi.Text = "Maximum file size 25KB exceeded.";
-                            Labelpg_certi.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload8.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/pgrad_certi_" + FileUpload8.FileName));
-                            //cmd1.Parameters.AddWithValue("@pgradcertifile", "~/Uploads/" + Label_UserID.Text + "/pgrad_certi_" + FileUpload8.FileName);
-                            /*cmd1.Parameters.AddWithValue("@pgradcertimime", FileUpload8.PostedFile.ContentType);
-                            byte[] imagebytes8 = new byte[FileUpload8.PostedFile.InputStream.Length + 1];
-                            FileUpload8.PostedFile.InputStream.Read(imagebytes8, 0, imagebytes8.Length);
-                            cmd1.Parameters.AddWithValue("@pgradcertibindata", imagebytes8);*/
-                            Session["ImageBytes8"] = FileUpload8.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelpg_certi.Text = "File Uploaded";
-                            Labelpg_certi.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@pgradcertidatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload9.PostedFile == null || string.IsNullOrEmpty(FileUpload9.PostedFile.FileName) || FileUpload9.PostedFile.InputStream == null)
-                {
-                    Labeldoc_hod.Text = "Error - Unable to upload Post Graduation Certificate. Please Try again.";
-                    Labeldoc_hod.ForeColor = System.Drawing.Color.Red;
-                    //cmd1.Parameters.AddWithValue("@pgradcertifile", (object)DBNull.Value);
-                    //cmd1.Parameters.AddWithValue("@pgradcertimime", (object)DBNull.Value);
-                    //cmd1.Parameters.AddWithValue("@pgradcertibindata", (object)DBNull.Value);
-                    //cmd1.Parameters.AddWithValue("@pgradcertidatetime", (object)DBNull.Value);
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload9.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labeldoc_hod.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labeldoc_hod.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload9.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labeldoc_hod.Text = "Maximum file size 25KB exceeded.";
-                            Labeldoc_hod.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload9.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/doc_hod_" + FileUpload9.FileName));
-                            //cmd1.Parameters.AddWithValue("@dochodfile", "~/Uploads/" + Label_UserID.Text + "/doc_hod_" + FileUpload8.FileName);
-                            /*cmd1.Parameters.AddWithValue("@dochodmime", FileUpload8.PostedFile.ContentType);
-                            byte[] imagebytes9 = new byte[FileUpload9.PostedFile.InputStream.Length + 1];
-                            FileUpload9.PostedFile.InputStream.Read(imagebytes9, 0, imagebytes9.Length);
-                            cmd1.Parameters.AddWithValue("@dochodbindata", imagebytes9);*/
-                            Session["ImageBytes9"] = FileUpload9.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labeldoc_hod.Text = "File Uploaded";
-                            Labeldoc_hod.ForeColor = System.Drawing.Color.Green;
-                            cmd1.Parameters.AddWithValue("@dochoddatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload10.PostedFile == null || string.IsNullOrEmpty(FileUpload10.PostedFile.FileName) || FileUpload10.PostedFile.InputStream == null)
-                {
-                    Labelsignature.Text = "Error - Unable to upload Signature. Please Try again.";
-                    Labelsignature.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload10.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelsignature.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelsignature.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload10.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelsignature.Text = "Maximum file size 25KB exceeded.";
-                            Labelsignature.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload10.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/sign_" + FileUpload10.FileName));
-                            //cmd1.Parameters.AddWithValue("@signfile", "~/Uploads/" + Label_UserID.Text + "/sign_" + FileUpload10.FileName);
-                            /*cmd1.Parameters.AddWithValue("@signmime", FileUpload10.PostedFile.ContentType);
-                            byte[] imagebytes10 = new byte[FileUpload10.PostedFile.InputStream.Length + 1];
-                            FileUpload10.PostedFile.InputStream.Read(imagebytes10, 0, imagebytes10.Length);
-                            cmd1.Parameters.AddWithValue("@signbindata", imagebytes10);*/
-                            Session["ImageBytes10"] = FileUpload10.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelsignature.Text = "File Uploaded";
-                            Labelsignature.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@signdatetime", DateTime.Now);
-                        }
-                    }
-                }
-
-                if (FileUpload11.PostedFile == null || string.IsNullOrEmpty(FileUpload11.PostedFile.FileName) || FileUpload11.PostedFile.InputStream == null)
-                {
-                    Labelphoto.Text = "Error - Unable to upload Photograph. Please Try again.";
-                    Labelphoto.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    string fileExtension = System.IO.Path.GetExtension(FileUpload11.FileName);
-                    if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
-                    {
-                        Labelphoto.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                        Labelphoto.ForeColor = System.Drawing.Color.Red;
-                    }
-                    else
-                    {
-                        int fileSize = FileUpload11.PostedFile.ContentLength;
-                        if (fileSize > 25600)
-                        {
-                            Labelphoto.Text = "Maximum file size 25KB exceeded.";
-                            Labelphoto.ForeColor = System.Drawing.Color.Red;
-                        }
-                        else
-                        {
-                            FileUpload11.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/photo_" + FileUpload11.FileName));
-                            //cmd1.Parameters.AddWithValue("@photofile", "~/Uploads/" + Label_UserID.Text + "/photo_" + FileUpload11.FileName);
-                            /*cmd1.Parameters.AddWithValue("@photomime", FileUpload8.PostedFile.ContentType);
-                            byte[] imagebytes11 = new byte[FileUpload11.PostedFile.InputStream.Length + 1];
-                            FileUpload11.PostedFile.InputStream.Read(imagebytes11, 0, imagebytes11.Length);
-                            cmd1.Parameters.AddWithValue("@photobindata", imagebytes11);*/
-                            Session["ImageBytes11"] = FileUpload11.FileBytes;
-                            Image1.ImageUrl = "~/Handler.ashx";
-                            Labelphoto.Text = "File Uploaded";
-                            Labelphoto.ForeColor = System.Drawing.Color.Green;
-                            //cmd1.Parameters.AddWithValue("@photodatetime", DateTime.Now);
-                        }
-                    }
-                }
-                con.Open();
-                cmd1.ExecuteNonQuery();
-                Response.Write("Uploaded Successfully");
-                con.Close();
-            }
-    
-        }
-
         protected void Previous3_Click(object sender, EventArgs e)
         {
             SetSelectedTab(TabIndex.TWO);
@@ -1365,69 +927,46 @@ namespace PhD
             if (FileUpload1.HasFile)
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload1.FileName);
-                if (fileExtension.ToLower() != ".jpeg" || fileExtension.ToLower() != ".jpg" || fileExtension.ToLower() != ".pdf")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelxii_certi.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
-                    Labelxii_certi.ForeColor = System.Drawing.Color.Red;
+                    Label1.Text = "Only files with .jpeg or .jpg or .pdf extension  are allowed";
+                    Label1.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload1.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelxii_certi.Text = "Maximum file size 25kb exceeded.";
-                        Labelxii_certi.ForeColor = System.Drawing.Color.Red;
+                        Label1.Text = "Maximum file size 25KB exceeded.";
+                        Label1.ForeColor = System.Drawing.Color.Red;
                     }
-                    
-                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/101/" + "xii_certi_"+FileUpload1.FileName));
+
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("xii_certi_*",SearchOption.TopDirectoryOnly);
+                    foreach(FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch(Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload1.SaveAs(Server.MapPath("~/Uploads/"+Label_UserID.Text+"/xii_certi_"+FileUpload1.FileName));
                     Session["ImageBytes"] = FileUpload1.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelxii_certi.Text = "File Uploaded";
-                    Labelxii_certi.ForeColor = System.Drawing.Color.Green;
+                    Label1.Text = "File Uploaded";
+                    Label1.ForeColor = System.Drawing.Color.Green;
                 }
-
-                    /* string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-                     try
-                     {
-                         SqlConnection con = new SqlConnection(CS);
-                         string insertQuery="insert into [Upload_Doc] ([XII_Certi_Filename],[XII_Certi_Mime],[XII_Certi_BinaryData],[XII_Certi_DateTimeUploaded]) values(@xiicertifile,@xiicertimime,@xiicertibindata,@xiicertidatetime) where UsrID='"+Label_UserID.Text+"'";
-                         SqlCommand cmd = new SqlCommand(insertQuery, con);
-                         cmd.Parameters.AddWithValue("@xiicertifile",FileUpload1.FileName.Trim());
-                         cmd.Parameters.AddWithValue("xiicertimime", FileUpload1.PostedFile.ContentType);
-                         byte[] imagebytes = new byte[FileUpload1.PostedFile.InputStream.Length + 1];
-                         FileUpload1.PostedFile.InputStream.Read(imagebytes, 0, imagebytes.Length);
-                         cmd.Parameters.AddWithValue("xiicertibindata", imagebytes);
-                         cmd.Parameters.AddWithValue("@xiicertidatetime", DateTime.Now);
-
-                         con.Open();
-                         cmd.ExecuteNonQuery();
-                         Label1.Text = "File Uploaded";
-                         Label1.ForeColor = System.Drawing.Color.Green;
-                         con.Close();
-                     }
-                     catch(Exception ex1)
-                     {
-                         Response.Write("ERROR " + ex1.ToString());
-                     }*/
-
-                    /*string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-                    SqlConnection con = new SqlConnection(CS);
-                    string checkuser = "select count(*) from [Upload_Doc] where UsrID='" + Label_UserID.Text + "'";
-                    SqlCommand cmd = new SqlCommand(checkuser, con);
-                    con.Open();
-                    Int32 result = (Int32)cmd.ExecuteScalar();
-                    con.Close();
-                    if (result == 0)
-                    {
-
-                    }
-
-                }*/
             }
             else
             {
-                Labelxii_certi.Text = "Please Select a valid file to upload.";
-                Labelxii_certi.ForeColor = System.Drawing.Color.Red;
+                Label1.Text = "Please Select a valid file to upload.";
+                Label1.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button2_Click(object sender, EventArgs e)
@@ -1436,30 +975,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload2.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelx_certi.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelx_certi.ForeColor = System.Drawing.Color.Red;
+                    Label2.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label2.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload2.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelx_certi.Text = "Maximum file size 25KB exceeded.";
-                        Labelx_certi.ForeColor = System.Drawing.Color.Red;
+                        Label2.Text = "Maximum file size 25KB exceeded.";
+                        Label2.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload2.SaveAs(Server.MapPath("~/Uploads/101/" +"x_marksheet"+ FileUpload2.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("x_certi_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload2.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/x_certi_" + FileUpload2.FileName));
                     Session["ImageBytes"] = FileUpload2.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelx_certi.Text = "File Uploaded";
-                    Labelx_certi.ForeColor = System.Drawing.Color.Green;
+                    Label2.Text = "File Uploaded";
+                    Label2.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelx_certi.Text = "Please Select a valid file to upload.";
-                Labelx_certi.ForeColor = System.Drawing.Color.Red;
+                Label2.Text = "Please Select a valid file to upload.";
+                Label2.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button3_Click(object sender, EventArgs e)
@@ -1468,30 +1022,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload3.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelxii_marksheet.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelxii_marksheet.ForeColor = System.Drawing.Color.Red;
+                    Label3.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label3.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload4.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelxii_marksheet.Text = "Maximum file size 25KB exceeded.";
-                        Labelxii_marksheet.ForeColor = System.Drawing.Color.Red;
+                        Label3.Text = "Maximum file size 25KB exceeded.";
+                        Label3.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload3.SaveAs(Server.MapPath("~/Uploads/101/" +"xii_marksheet"+ FileUpload3.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("xii_marksheet_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload3.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/xii_marksheet_" + FileUpload3.FileName));
                     Session["ImageBytes"] = FileUpload3.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelxii_marksheet.Text = "File Uploaded";
-                    Labelxii_marksheet.ForeColor = System.Drawing.Color.Green;
+                    Label3.Text = "File Uploaded";
+                    Label3.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelxii_marksheet.Text = "Please Select a valid file to upload.";
-                Labelxii_marksheet.ForeColor = System.Drawing.Color.Red;
+                Label3.Text = "Please Select a valid file to upload.";
+                Label3.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button4_Click(object sender, EventArgs e)
@@ -1500,30 +1069,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload4.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelx_marksheet.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelx_marksheet.ForeColor = System.Drawing.Color.Red;
+                    Label4.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label4.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload4.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelx_marksheet.Text = "Maximum file size 25KB exceeded.";
-                        Labelx_marksheet.ForeColor = System.Drawing.Color.Red;
+                        Label4.Text = "Maximum file size 25KB exceeded.";
+                        Label4.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload4.SaveAs(Server.MapPath("~/Uploads/101/" +"x_marksheet"+ FileUpload4.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("x_marksheet_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload4.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/x_marksheet_" + FileUpload4.FileName));
                     Session["ImageBytes"] = FileUpload4.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelx_marksheet.Text = "File Uploaded";
-                    Labelx_marksheet.ForeColor = System.Drawing.Color.Green;
+                    Label4.Text = "File Uploaded";
+                    Label4.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelx_marksheet.Text = "Please Select a valid file to upload.";
-                Labelx_marksheet.ForeColor = System.Drawing.Color.Red;
+                Label4.Text = "Please Select a valid file to upload.";
+                Label4.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button5_Click(object sender, EventArgs e)
@@ -1532,30 +1116,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload5.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelgrad_marksheet.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelgrad_marksheet.ForeColor = System.Drawing.Color.Red;
+                    Label5.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label5.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload5.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelgrad_marksheet.Text = "Maximum file size 25KB exceeded.";
-                        Labelgrad_marksheet.ForeColor = System.Drawing.Color.Red;
+                        Label5.Text = "Maximum file size 25KB exceeded.";
+                        Label5.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload5.SaveAs(Server.MapPath("~/Uploads/101/" +"grad_marksheet"+ FileUpload5.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("grad_marksheet_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload5.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/grad_marksheet_" + FileUpload5.FileName));
                     Session["ImageBytes"] = FileUpload5.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelgrad_marksheet.Text = "File Uploaded";
-                    Labelgrad_marksheet.ForeColor = System.Drawing.Color.Green;
+                    Label5.Text = "File Uploaded";
+                    Label5.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelgrad_marksheet.Text = "Please Select a valid file to upload.";
-                Labelgrad_marksheet.ForeColor = System.Drawing.Color.Red;
+                Label5.Text = "Please Select a valid file to upload.";
+                Label5.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button6_Click(object sender, EventArgs e)
@@ -1564,30 +1163,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload6.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelpg_marksheet.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelpg_marksheet.ForeColor = System.Drawing.Color.Red;
+                    Label6.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label6.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload6.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelpg_marksheet.Text = "Maximum file size 25KB exceeded.";
-                        Labelpg_marksheet.ForeColor = System.Drawing.Color.Red;
+                        Label6.Text = "Maximum file size 25KB exceeded.";
+                        Label6.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload6.SaveAs(Server.MapPath("~/Uploads/101/" +"pg_marksheet"+ FileUpload6.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("pgrad_marksheet_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload6.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/pgrad_marksheet_" + FileUpload6.FileName));
                     Session["ImageBytes"] = FileUpload6.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelpg_marksheet.Text = "File Uploaded";
-                    Labelpg_marksheet.ForeColor = System.Drawing.Color.Green;
+                    Label6.Text = "File Uploaded";
+                    Label6.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelpg_marksheet.Text = "Please Select a valid file to upload.";
-                Labelpg_marksheet.ForeColor = System.Drawing.Color.Red;
+                Label6.Text = "Please Select a valid file to upload.";
+                Label6.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button7_Click(object sender, EventArgs e)
@@ -1596,30 +1210,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload7.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelgrad_certi.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelgrad_certi.ForeColor = System.Drawing.Color.Red;
+                    Label7.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label7.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload7.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelgrad_certi.Text = "Maximum file size 25KB exceeded.";
-                        Labelgrad_certi.ForeColor = System.Drawing.Color.Red;
+                        Label7.Text = "Maximum file size 25KB exceeded.";
+                        Label7.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload7.SaveAs(Server.MapPath("~/Uploads/101/" +"grad_certi"+ FileUpload7.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("grad_certi_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload7.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/grad_certi_" + FileUpload7.FileName));
                     Session["ImageBytes"] = FileUpload7.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelgrad_certi.Text = "File Uploaded";
-                    Labelgrad_certi.ForeColor = System.Drawing.Color.Green;
+                    Label7.Text = "File Uploaded";
+                    Label7.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelgrad_certi.Text = "Please Select a valid file to upload.";
-                Labelgrad_certi.ForeColor = System.Drawing.Color.Red;
+                Label7.Text = "Please Select a valid file to upload.";
+                Label7.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button8_Click(object sender, EventArgs e)
@@ -1628,30 +1257,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload8.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelpg_certi.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelpg_certi.ForeColor = System.Drawing.Color.Red;
+                    Label8.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label8.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload8.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelpg_certi.Text = "Maximum file size 25KB exceeded.";
-                        Labelpg_certi.ForeColor = System.Drawing.Color.Red;
+                        Label8.Text = "Maximum file size 25KB exceeded.";
+                        Label8.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload8.SaveAs(Server.MapPath("~/Uploads/101/" +"pg_certi"+ FileUpload9.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("pgrad_certi_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload8.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/pgrad_certi_" + FileUpload9.FileName));
                     Session["ImageBytes"] = FileUpload8.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelpg_certi.Text = "File Uploaded";
-                    Labelpg_certi.ForeColor = System.Drawing.Color.Green;
+                    Label8.Text = "File Uploaded";
+                    Label8.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelpg_certi.Text = "Please Select a valid file to upload.";
-                Labelpg_certi.ForeColor = System.Drawing.Color.Red;
+                Label8.Text = "Please Select a valid file to upload.";
+                Label8.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button9_Click(object sender, EventArgs e)
@@ -1660,30 +1304,45 @@ namespace PhD
             {
                 string fileExtension = System.IO.Path.GetExtension(FileUpload9.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labeldoc_hod.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labeldoc_hod.ForeColor = System.Drawing.Color.Red;
+                    Label9.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label9.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload9.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labeldoc_hod.Text = "Maximum file size 25KB exceeded.";
-                        Labeldoc_hod.ForeColor = System.Drawing.Color.Red;
+                        Label9.Text = "Maximum file size 25KB exceeded.";
+                        Label9.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload9.SaveAs(Server.MapPath("~/Uploads/101/" +"doc_hod"+ FileUpload9.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("doc_attested_by_hod_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload9.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/doc_attested_by_hod_" + FileUpload9.FileName));
                     Session["ImageBytes"] = FileUpload9.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labeldoc_hod.Text = "File Uploaded";
-                    Labeldoc_hod.ForeColor = System.Drawing.Color.Green;
+                    Label9.Text = "File Uploaded";
+                    Label9.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labeldoc_hod.Text = "Please Select a valid file to upload.";
-                Labeldoc_hod.ForeColor = System.Drawing.Color.Red;
+                Label9.Text = "Please Select a valid file to upload.";
+                Label9.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void upload_button10_Click(object sender, EventArgs e)
@@ -1693,30 +1352,93 @@ namespace PhD
                
                 string fileExtension = System.IO.Path.GetExtension(FileUpload10.FileName);
 
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf")
                 {
-                    Labelsignature.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelsignature.ForeColor = System.Drawing.Color.Red;
+                    Label10.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label10.ForeColor = System.Drawing.Color.Red;
                 }
                 else
                 {
                     int fileSize = FileUpload10.PostedFile.ContentLength;
                     if (fileSize > 25600)
                     {
-                        Labelsignature.Text = "Maximum file size 25KB exceeded.";
-                        Labelsignature.ForeColor = System.Drawing.Color.Red;
+                        Label10.Text = "Maximum file size 25KB exceeded.";
+                        Label10.ForeColor = System.Drawing.Color.Red;
                     }
-                    FileUpload10.SaveAs(Server.MapPath("~/Uploads/101" +"signature"+ FileUpload10.FileName));
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("signature_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload10.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/signature_" + FileUpload10.FileName));
                     Session["ImageBytes"] = FileUpload10.FileBytes;
                     Image1.ImageUrl = "~/Handler.ashx";
-                    Labelsignature.Text = "File Uploaded";
-                    Labelsignature.ForeColor = System.Drawing.Color.Green;
+                    Label10.Text = "File Uploaded";
+                    Label10.ForeColor = System.Drawing.Color.Green;
                 }
             }
             else
             {
-                Labelsignature.Text = "Please Select a valid file to upload.";
-                Labelsignature.ForeColor = System.Drawing.Color.Red;
+                Label10.Text = "Please Select a valid file to upload.";
+                Label10.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        protected void upload_button11_Click(object sender, EventArgs e)
+        {
+            if (FileUpload11.HasFile)
+            {
+                string fileExtension = System.IO.Path.GetExtension(FileUpload11.FileName);
+
+                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg" && fileExtension.ToLower() != ".pdf") 
+                {
+                    Label11.Text = "Only files with .jpeg or .jpg extension are allowed";
+                    Label11.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    int fileSize = FileUpload11.PostedFile.ContentLength;
+                    if (fileSize > 25600)
+                    {
+                        Label11.Text = "Maximum file size 25KB exceeded.";
+                        Label11.ForeColor = System.Drawing.Color.Red;
+                    }
+                    string folderpath = "C:/Users/Tanya/Documents/Visual Studio 2017/Projects/WebSite2/Uploads/" + Label_UserID.Text + "/";
+                    DirectoryInfo dir = new DirectoryInfo(folderpath);
+                    FileInfo[] filesInDir = dir.GetFiles("photo_*", SearchOption.TopDirectoryOnly);
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        try
+                        {
+                            System.IO.File.Delete(folderpath + filename);
+                        }
+                        catch (Exception err)
+                        {
+                            Console.WriteLine(err.Message);
+                        }
+                    }
+                    FileUpload11.SaveAs(Server.MapPath("~/Uploads/" + Label_UserID.Text + "/photo_" + FileUpload11.FileName));
+                    Session["ImageBytes"] = FileUpload11.FileBytes;
+                    Image1.ImageUrl = "~/Handler.ashx";
+                    Label11.Text = "File Uploaded";
+                    Label11.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                Label11.Text = "Please Select a valid file to upload.";
+                Label11.ForeColor = System.Drawing.Color.Red;
             }
         }
         protected void button_download_Click(object sender, EventArgs e)
@@ -1726,38 +1448,7 @@ namespace PhD
             Response.TransmitFile(Server.MapPath("~/Files/admission_form.docx"));
             Response.End();
         }
-        protected void upload_button11_Click(object sender, EventArgs e)
-        {
-            if (FileUpload11.HasFile)
-            {
-                string fileExtension = System.IO.Path.GetExtension(FileUpload11.FileName);
-
-                if (fileExtension.ToLower() != ".jpeg" && fileExtension.ToLower() != ".jpg")
-                {
-                    Labelphoto.Text = "Only files with .jpeg or .jpg extension are allowed";
-                    Labelphoto.ForeColor = System.Drawing.Color.Red;
-                }
-                else
-                {
-                    int fileSize = FileUpload11.PostedFile.ContentLength;
-                    if (fileSize > 25600)
-                    {
-                        Labelphoto.Text = "Maximum file size 25KB exceeded.";
-                        Labelphoto.ForeColor = System.Drawing.Color.Red;
-                    }
-                    FileUpload11.SaveAs(Server.MapPath("~/Uploads/101/" +"photo"+ FileUpload11.FileName));
-                    Session["ImageBytes"] = FileUpload11.FileBytes;
-                    Image1.ImageUrl = "~/Handler.ashx";
-                    Labelphoto.Text = "File Uploaded";
-                    Labelphoto.ForeColor = System.Drawing.Color.Green;
-                }
-            }
-            else
-            {
-                Labelphoto.Text = "Please Select a valid file to upload.";
-                Labelphoto.ForeColor = System.Drawing.Color.Red;
-            }
-        }
+        
 
 
         protected void Next4_Click1(object sender, EventArgs e)
@@ -1765,14 +1456,14 @@ namespace PhD
             SetSelectedTab(TabIndex.FOUR);
         }
 
-        protected void Button2_Click1(object sender, EventArgs e)
+        protected void Button_ViewFormClick(object sender, EventArgs e)
         {
-            Response.Write("works");
+           // Response.Write("works");
             Session["UserID"] = Label_UserID.Text;
             Response.Redirect("~/display_form.aspx");
         }
 
-        protected void Button4_Click1(object sender, EventArgs e)
+        protected void Button_PrintFormClick(object sender, EventArgs e)
         {
             Session["UserID"] = Label_UserID.Text;
             Response.Redirect("~/display_form.aspx");
